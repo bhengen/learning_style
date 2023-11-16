@@ -1,0 +1,27 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+}
+
+#imageContainer {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* Adjust the number of columns as needed */
+    /* gap: 100px;  Adjust the gap between images */
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+#submitButton {
+    margin: 20px auto;
+    background-color: transparent; 
+    border: 1px solid #000;
+    padding: 10px 20px;
+    cursor: pointer; 
+}
+
+#submitButton:hover {
+    background-color: #ccc;
+}

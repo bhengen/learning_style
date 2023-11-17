@@ -1,0 +1,56 @@
+body {
+    margin: 0;
+    padding: 20px;
+ 
+}
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Adjust the number of columns as needed */
+    grid-gap: 20px;
+}
+    
+h1 {
+    margin-bottom: 20px;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    color: darkslategrey;
+}
+
+.student-row {
+    border: 1px solid #ccc;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    text-align: left;
+}
+
+.student-id, .first-name, .last-name, .class-period {
+    display: block;
+    margin-bottom: 8px;
+    padding: 5px;
+}
+
+.student-id {
+    font-weight: bold;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px; /* Adjust the gap as needed */
+}
+.submit {
+    background-color: #4CAF50; /* Green background */
+    color: white; /* White text */
+    border: none; /* No border */
+    font-size: 16px; /* Set font size */
+    cursor: pointer; /* Add cursor pointer */
+    border-radius: 5px; /* Optional: Add rounded corners */
+    transition: background-color 0.3s; /* Smooth color transition */
+}
+
+.submit:hover {
+    background-color: darkslategray; /* Darker green on hover */
+}

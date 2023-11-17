@@ -1,23 +1,47 @@
+<!DOCTYPE html>
 <?php
-include_once(process_data.php);
+include('db.php');
+echo "hello world!";
+// Now you can use $conn in this file to interact with the database
+//$query = "SELECT * FROM your_table";
+//$result = mysqli_query($conn, $query);
+//echo $result;
+// Rest of your code...
 ?>
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Student Learning Style Assessment</title>
-        <link rel="stylesheet" href="css/styles.css">
 
-    </head>
-    <body>
-        <h3>What is your learning style?</h3>
-        <p>From each of the images below, pick which image you most closely identify with.</p>
-        <p>Your score will automatically be tallied as you select the corresponding option</p>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/login.css">
+    <title>Sign In</title>
+</head>
+<body>
+    <h2>
+        Student Learning Assessment Tool
+    </h2>
+    <form>
 
-        <div id="imageContainer"></div>
-        <button id="submitButton">Submit</button>
+        <label for="studentId">Student ID:</label>
+        <input type="text" id="studentId" name="studentId" required>
 
-        <script src="scripts/main.js" defer type="text/javascript"></script>
-    </body>
-    </html>
+        <label for="firstName">First Name:</label>
+        <input type="text" id="firstName" name="firstName" required>
+
+        <label for="lastName">Last Name:</label>
+        <input type="text" id="lastName" name="lastName" required>
+
+        <select id="classPeriod" name="classPeriod" required>
+            <option value="1">Period 1</option>
+            <option value="2">Period 2</option>
+            <option value="3">Period 3</option>
+            <option value="4">Period 4</option>
+            <option value="5">Period 5</option>
+            <option value="6">Period 6</option>
+        </select>
+
+        <button type="submit">Sign In</button>
+    </form>
+
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Style Results Page</title>
+    <link href="./css/results.css" rel="stylesheet"></style>
+</head>
+<body>
+    <h2>Learning Style Results Page</h2>
+    <table id="resultsTable">
+        <thead>
+            <tr>
+                <th colspan="9" id="header-label">Total Count of Numbers Selected</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td rowspan="2" class="total-label">Total Each #1-7</td>
+                <td id="label">1</td>
+                <td id="label">2</td>
+                <td id="label">3</td>
+                <td id="label">4</td>
+                <td id="label">5</td>
+                <td id="label">6</td>
+                <td id="label">7</td>
+                <td id="grand-total-label">Grand Total</td>
+            </tr>
+            <tr id="dataRow">
+                <td id="one" class="data"></td>
+                <td id="two" class="data"></td>
+                <td id="three" class="data"></td>
+                <td id="four" class="data"></td>
+                <td id="five" class="data"></td>
+                <td id="six" class="data"></td>
+                <td id="seven" class="data"></td>
+                <td id="grandTotal" class="grandTotalData"></td>
+            </tr>
+
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="9" id="footer-label">
+                    There are no more than 8 for any of ther numbers above 1-7<br/>
+                    Your <u>grand total should be 28</u> for the #s 1-7 that was selected.
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+
+    <script src="scripts/result.js"></script>
+</body>
+</html>

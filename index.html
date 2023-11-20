@@ -3,18 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Learning Style Assessment</title>
-    <link rel="stylesheet" href="css/styles.css">
-
+    <link rel="stylesheet" href="css/login.css">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <title>Sign In</title>
 </head>
 <body>
-    <h3>What is your learning style?</h3>
-    <p>From each of the images below, pick which image you most closely identify with.</p>
-    <p>Your score will automatically be tallied as you select the corresponding option</p>
+    <h2>Student Learning Assessment Tool</h2>
+    <form id="assessmentForm" name="assessmentForm" method="post" action="gallery.php">
+        <label for="studentId">Student ID:</label>
+        <select id="studentId" name="studentId">
+            <option value="123">123</option>
+            <!-- Add other options as needed -->
+        </select>
 
-    <div id="imageContainer"></div>
-    <button id="submitButton">Submit</button>
+        <label for="firstName">First Name:</label>
+        <input type="text" id="firstName" name="firstName" value="John" required>
 
-    <script src="scripts/main.js" defer type="text/javascript"></script>
+        <label for="lastName">Last Name:</label>
+        <input type="text" id="lastName" name="lastName" value="Doe" required>
+
+        <select id="classPeriod" name="classPeriod" required>
+            <option value="1">Period 1</option>
+            <option value="2">Period 2</option>
+            <!-- Add other options as needed -->
+        </select>
+
+        <button type="submit" id="submitButton">Sign In</button>
+    </form>
 </body>
 </html>

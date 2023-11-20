@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <?php
+
+// This is the main landing page
+
 include('php/db.php');
 
 $query  = "SELECT * FROM students ORDER BY student_id";
@@ -23,7 +26,7 @@ if (!$result) {
 </head>
 <body>
     <h2>Student Learning Assessment Tool</h2>
-    <form>
+    <form method="post" action="gallery.php">
         <label for="studentId">Student ID:</label>
         <?php
             echo "<select id='studentId' name='studentId'>";
@@ -55,63 +58,52 @@ if (!$result) {
         // Close the database connection
         mysqli_close($conn);
     ?>
-        <script>
-            // Attach a handler to the onpageshow event
-            window.addEventListener('pageshow', function (event) {
-                // Check if the event's persisted property is false
-                // This indicates that the page is being loaded from the cache or the back-forward cache
-                if (event.persisted) {
-                    // Force a page refresh
-                    location.reload();
-                }
-            });
-            $('#studentId').val('Select student Id');
-                $('#firstName').val('');
-                $('#lastName').val('');
-                $('#classPeriod').val('');
+<script>
+    // Attach a handler to the onpageshow event
+    window.addEventListener('pageshow', function (event) {
+        // Check if the event's persisted property is false
+        // This indicates that the page is being loaded from the cache or the back-forward cache
+        if (event.persisted) {
+            // Force a page refresh
+            location.reload();
+        }
+    });
 
-            $(document).ready(function() {
+    $(document).ready(function() {
+        
+        // Clear input values on page load
+        $('#studentId').val('');
+        $('#firstName').val('');
+        $('#lastName').val('');
+        $('#classPeriod').val('');
+        
+        // Handle the change event for studentId
+        $('#studentId').change(function() {
+            var studentId = $(this).val();
 
-            // Handle the change event for studentId
-            $('#studentId').change(function() {
-                var studentId = $(this).val();
-
-                if (studentId !== '') {
-                    // If a valid studentId is selected, remove the default option
-                    //$('#studentId option[value=""]').remove();
-
-                    // Make your AJAX call here...
-                    $.ajax({
-                        url: 'php/get_student_data.php',
-                        type: 'POST',
-                        data: { studentId: studentId },
-                        dataType: 'json', // Ensure that jQuery interprets the response as JSON
-                        success: function(studentData) {
-                            console.log('Parsed data:', studentData);
-                            // Verify that IDs match keys and log values
-                            // Set field values
-                            $('#firstName').val(studentData[0].first_name);
-                            $('#lastName').val(studentData[0].last_name);
-                            $('#classPeriod').val(studentData[0].class_period);
-                        },
-                        error: function(xhr, status, error) {
-                            console.error('Error:', status, error);
-                        }
-                    });
-                }
-            });
-
-             // Handle the button click event
-             $('#submitButton').click(function(event) {
-
-                // Prevent the default form submission
-                event.preventDefault();
-                
-                // Redirect to the assessment page
-                window.location.href = 'assessment_page.php';
-            });
+            if (studentId !== '') {
+                // Make your AJAX call here...
+                $.ajax({
+                    url: 'php/get_student_data.php',
+                    type: 'POST',
+                    data: { studentId: studentId },
+                    dataType: 'json', // Ensure that jQuery interprets the response as JSON
+                    success: function(studentData) {
+                        console.log('Parsed data:', studentData);
+                        // Verify that IDs match keys and log values
+                        // Set field values
+                        $('#firstName').val(studentData[0].first_name);
+                        $('#lastName').val(studentData[0].last_name);
+                        $('#classPeriod').val(studentData[0].class_period);
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('Error:', status, error);
+                    }
+                });
+            }
         });
+    });
+</script>
 
-    </script>
 </body>
 </html>

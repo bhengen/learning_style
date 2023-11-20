@@ -1,5 +1,5 @@
 <?php
-    include_once('php/process_data.php');
+    //include_once('php/process_data.php');
 ?>
     <!DOCTYPE html>
     <html lang="en">

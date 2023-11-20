@@ -1,4 +1,6 @@
-// Generate data
+// script to load the images on the screen
+// and tally the results
+// called from assessment_page.php
 
 let weightsData;
 let images = [];

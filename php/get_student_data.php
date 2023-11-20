@@ -1,4 +1,6 @@
 <?php
+    // script to get the individual student to automatically populate the from 
+    // the index.php page
     
     header('Content-Type: application/json');
 

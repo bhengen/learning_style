@@ -1,5 +1,6 @@
 <?php
 include ("db.php");
+
 // program to display the student records as cards on the web page
 
 // add a blank card at the beginning to add the capability to add a student

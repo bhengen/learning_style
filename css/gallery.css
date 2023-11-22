@@ -1,0 +1,68 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #5c5a5a;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+}
+
+.studentInformation {
+    display: flex;
+    color: #2c2b2b;
+    background-color: rgb(233, 224, 224);
+    text-align: center;
+    justify-content: space-around; /* or justify-content: space-between; */
+    align-items: center;
+}
+
+.studentInformation p {
+    margin: 0; /* Remove default margin */
+}
+
+main {
+    margin-top: 60px; /* Adjust according to the header height */
+    padding: 20px;
+}
+
+h2, h3 {
+    text-align: center;
+}
+
+.image-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 200px;
+}
+
+.image-row {
+    display: flex;
+    justify-content: space-around;
+    width: 100%; /* ensure full width */
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.image-container {
+    text-align: center;
+    margin: 0 10px 20px; /* Adjust the margin as needed */
+}
+
+img {
+    width: 350px; /* Adjust the width as needed */
+    height: 300px; /* Adjust the height as needed */
+}
+
+label {
+    margin-right: 30px; /* Adjust the margin as needed */
+}

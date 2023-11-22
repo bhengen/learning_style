@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/gallery.css">
+    <title>Student Assessment Form</title>
+</head>
+<body>
+<header>
+    <h2>Learn Style Assessment Page</h2>
+    <h3>What is your learning style?</h3>
+    <p>From each of the images below, pick which option (A or B) you most closely identify with.</p>
+    <p>Your score will automatically be tallied as you select the corresponding option.</p>
+    <br/>
+    <div class="studentInformation">
+        <?PHP
+            echo "<p>Student Id: " . $_POST['studentId'] . "</p>".
+                 "<p>First Name: " . $_POST['firstName'] . "</p> ".
+                 "<p>Last Name: " . $_POST['lastName'] . "</p> ".
+                 "<p>Class Period: " . $_POST['classPeriod'] . "</p>";
+        ?>
+    </div>
+</header>
+<main>
+    <div class="image-gallery" id="imageGallery">
+        <!-- Add your images dynamically using JavaScript -->
+    </div>
+    <form id="assessmentForm" action="process.php" method="post">
+        <!-- Hidden input fields for student information -->
+        <input type="hidden" name="studentId" value="<?php echo $_POST['studentId']; ?>">
+        <input type="hidden" name="firstName" value="<?php echo $_POST['firstName']; ?>">
+        <input type="hidden" name="lastName" value="<?php echo $_POST['lastName']; ?>">
+        <input type="hidden" name="classPeriod" value="<?php echo $_POST['classPeriod']; ?>">
+        
+        <!-- Add other form elements for assessment if needed -->
+
+        <!-- Submit button -->
+        <button type="submit">Submit Assessment</button>
+    </form>
+</main>
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="scripts/gallery.js" type="text/javascript"></script>
+</body>
+</html>

@@ -26,7 +26,7 @@ if (!$result) {
 </head>
 <body>
     <h2>Student Learning Assessment Tool</h2>
-    <form method="post" action="gallery.php">
+    <form method="post" action="assessment_page.php">
         <label for="studentId">Student ID:</label>
         <?php
             echo "<select id='studentId' name='studentId'>";

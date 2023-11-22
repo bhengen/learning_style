@@ -30,7 +30,7 @@
                     <?php foreach ($data as $key => $value): ?>
                         <label for='<?php echo $key; ?>'><?php echo ucwords(str_replace('_', ' ', $key)); ?>:</label>
                         &nbsp;&nbsp;
-                        <input type='text' name='<?php echo $key; ?>' value='<?php echo $value;?>' required>
+                        <input type='text' name='<?php echo $key; ?>' value='<?php echo $value;?>' required>             
                         <br/><br/>
                     <?php endforeach; ?>
                     <div class='button-container'>

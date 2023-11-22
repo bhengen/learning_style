@@ -56,11 +56,17 @@ h2, h3 {
 .image-container {
     text-align: center;
     margin: 0 10px 20px; /* Adjust the margin as needed */
+    border: 2px solid #918f8f; /* Add a border */
+    border-radius: 8px; /* Optional: Add border radius for rounded corners */
+    padding: 10px; /* Add padding for inner spacing */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add box shadow for a subtle shading effect */
+    width: 33.3%;
 }
 
 img {
-    width: 350px; /* Adjust the width as needed */
-    height: 300px; /* Adjust the height as needed */
+    width: 100%; /* Make the image fill the container */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 6px; /* Optional: Add border radius for rounded corners */
 }
 
 label {

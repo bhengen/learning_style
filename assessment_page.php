@@ -30,13 +30,13 @@
         <input type="hidden" name="firstName" value="<?php echo $_POST['firstName']; ?>">
         <input type="hidden" name="lastName" value="<?php echo $_POST['lastName']; ?>">
         <input type="hidden" name="classPeriod" value="<?php echo $_POST['classPeriod']; ?>">
-        <input type="hidden" id="selected_radio" name="selected_radio" value="test">
+        <input type="hidden" id="selected_items" name="selectedItems">
         <!-- Submit button -->
-        <button type="submit">Submit Assessment</button>
+        <button type="submit" id="submitButton">Submit Assessment</button>
     </form>
 </main>
 
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-<script src="scripts/gallery.js" type="text/javascript"></script>
+<script src="scripts/create_page.js" type="text/javascript"></script>
 </body>
 </html>

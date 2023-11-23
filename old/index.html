@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/login.css">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <title>Sign In</title>
+</head>
+<body>
+    <h2>Student Learning Assessment Tool</h2>
+    <form id="assessmentForm" name="assessmentForm" method="post" action="gallery.php">
+        <label for="studentId">Student ID:</label>
+        <select id="studentId" name="studentId">
+            <option value="123">123</option>
+            <!-- Add other options as needed -->
+        </select>
+
+        <label for="firstName">First Name:</label>
+        <input type="text" id="firstName" name="firstName" value="John" required>
+
+        <label for="lastName">Last Name:</label>
+        <input type="text" id="lastName" name="lastName" value="Doe" required>
+
+        <select id="classPeriod" name="classPeriod" required>
+            <option value="1">Period 1</option>
+            <option value="2">Period 2</option>
+            <!-- Add other options as needed -->
+        </select>
+
+        <button type="submit" id="submitButton">Sign In</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,60 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin-top: 200px;
+    align-content: center;
+    width: auto;
+}
+header {
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+}
+
+h2 {
+    text-align: center;
+    padding: 10px;
+}
+
+#resultsTable {
+    border-collapse: collapse;
+    width: 75%;
+    margin: 20px auto;
+}
+
+#resultsTable th, #resultsTable td {
+    border: 1px solid #000;
+    padding: 10px;
+    text-align: center;
+}
+
+.total-label {
+    font-weight: bold;
+    width: 15%;
+    height: 50px;
+    background-color: lightsteelblue;
+}
+
+#grand-total-label {
+    font-weight: bold;
+    background-color: lightsteelblue;
+}
+
+#label {
+    background-color: lightsteelblue;
+    font-weight: bold;
+    font-size: large;
+    width: 10%;
+}
+
+.data {
+    height: 25px;
+}
+#header-label {
+    height: 30px;
+    font-size: 20px;
+}
+
+#footer-label {
+    font-weight: bold;
+    height: 30px;
+}

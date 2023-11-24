@@ -5,6 +5,18 @@
     error_reporting(E_ALL);
     ini_set('display_errors', 1);
 
+    // Check if the timestamp is already stored in the session
+    if (!isset($_SESSION['timestamp'])) {
+        // If not, set the timestamp
+        $_SESSION['timestamp'] = date("YmdHis");
+    }
+
+    // Retrieve the timestamp from the session
+    $timestamp = $_SESSION['timestamp'];
+
+    // Display the timestamp for debugging purposes
+    //echo "Timestamp: " . $timestamp;
+
     include("php/db.php"); // make a connection to the database
 
     mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
@@ -22,7 +34,19 @@
     $bins = [];
     $sum = 0;
 
+
+
     foreach ($labels as $key => $val) {
+
+        // insert the response into the table
+        $insertQuery = "INSERT INTO responses (response_id,student_id,label_selected,class_period) 
+            VALUES ('$timestamp','$studentId','$val','$classPeriod')";
+        $insertResult = mysqli_query($conn, $insertQuery);
+        if(!$insertResult) {
+            echo "Error adding record to table";
+        }
+
+        // create the weight table from the select labels
         $query = "SELECT weight FROM `Weights` WHERE label = '" . $val . "'";
         $result = mysqli_query($conn, $query);
     
@@ -33,13 +57,24 @@
             } else {
                 echo "No result for label: " . $val;
             }
+            
+
+
         } else {
             echo "Error reading table: " . mysqli_error($conn);
         }
+
     }
+
+    // close the connection
+    mysqli_close($conn);
+
+    // get the number of times each digit (1-7) occurs
     $occurrences = array_count_values($weights);
+
+    // get the total sum of occurrences. should total to 28
     $sum = array_sum(array_values($occurrences));
-          
+  
 ?>
 <html lang="en">
 <head>
@@ -76,13 +111,13 @@
                 <td id="grand-total-label">Grand Total</td>
             </tr>
             <tr id="dataRow">
-                <td id="one" class="data"><?PHP echo $occurrences[1];  ?></td>
-                <td id="two" class="data"><?PHP echo $occurrences[2];  ?></td>
-                <td id="three" class="data"><?PHP echo $occurrences[3];?></td>
-                <td id="four" class="data"><?PHP echo $occurrences[4]; ?></td>
-                <td id="five" class="data"><?PHP echo $occurrences[5]; ?></td>
-                <td id="six" class="data"><?PHP echo $occurrences[6];  ?></td>
-                <td id="seven" class="data"><?PHP echo $occurrences[7]; ?></td>
+                <td id="one" class="data"><?PHP echo isset($occurrences[1])   ? $occurrences[1] : 0; ?></td>
+                <td id="two" class="data"><?PHP echo isset($occurrences[2])   ? $occurrences[2] : 0; ?></td>
+                <td id="three" class="data"><?PHP echo isset($occurrences[3]) ? $occurrences[3] : 0 ;?></td>
+                <td id="four" class="data"><?PHP echo  isset($occurrences[4]) ? $occurrences[4] : 0; ?></td>
+                <td id="five" class="data"><?PHP echo  isset($occurrences[5]) ? $occurrences[5] : 0; ?></td>
+                <td id="six" class="data"><?PHP echo  isset($occurrences[6])  ? $occurrences[6] : 0; ?></td>
+                <td id="seven" class="data"><?PHP echo isset($occurrences[7]) ? $occurrences[7] : 0; ?></td>
                 <td id="grandTotal" class="grandTotalData"><?PHP echo $sum ?></td>
             </tr>
 

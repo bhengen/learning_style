@@ -97,12 +97,17 @@ $(document).ready(function () {
 
             selectedValues.push(itemSelected);
         });
-        console.log(selectedValues)
+       
 
         // append the selected items to the hidden input tag
         hiddenSelections.value = selectedValues.join(",");
-        
-        // submit the form
-        $('form').submit();
+        console.log(selectedValues.length);
+
+        //if (selectedValues.length != 28) {
+       //     alert("You need to select all 28 to continue");
+       // } else {
+            // submit the form
+            $('form').submit();
+        //}
     });
 });

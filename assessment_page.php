@@ -32,7 +32,10 @@
         <input type="hidden" name="classPeriod" value="<?php echo $_POST['classPeriod']; ?>">
         <input type="hidden" id="selected_items" name="selectedItems">
         <!-- Submit button -->
-        <button type="submit" id="submitButton">Submit Assessment</button>
+        <div class="button-container">
+            <button type="button" id="submitButton">Complete</button>
+        </div>
+
     </form>
 </main>
 

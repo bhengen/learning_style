@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <?php
+session_start();
+unset($_SESSION['timestamp']);
 
 // This is the main landing page
 

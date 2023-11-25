@@ -10,41 +10,44 @@ for (let i = 1; i <= 28; i++) {
 
 $(document).ready(function () {
 
+
     // Function to create radio buttons with labels
     function createRadioGroup(index) {
-        const radioGroup = document.createElement("div");
-
+        const container = document.createElement("div");
+        container.classList.add("radio-group"); // Add "with-radio" class
+    
         const radioA = createRadioButton(imagePaths[index], "A");
         const labelA = createLabel(imagePaths[index], "A");
 
         const radioB = createRadioButton(imagePaths[index], "B");
         const labelB = createLabel(imagePaths[index], "B");
 
-        radioGroup.appendChild(radioA);
-        radioGroup.appendChild(labelA);
-        radioGroup.appendChild(radioB);
-        radioGroup.appendChild(labelB);
+        container.appendChild(radioA);
+        container.appendChild(labelA);
+        container.appendChild(radioB);
+        container.appendChild(labelB);
 
-        return radioGroup;
+        return container;
     }
 
     function createLabel(imageName, value) {
         const label = document.createElement("label");
         label.htmlFor = imageName + value;
         label.innerText = value;
-
+        
         return label;
     }
 
     function createRadioButton(imageName, value) {
         const radio = document.createElement("input");
+
         radio.type = "radio";
         radio.name = imageName;
         radio.value = value;
 
         return radio;
     }
-
+    
     // Add images dynamically
     const imageGallery = document.getElementById("imageGallery");
     let currentRow;
@@ -103,11 +106,11 @@ $(document).ready(function () {
         hiddenSelections.value = selectedValues.join(",");
         console.log(selectedValues.length);
 
-        //if (selectedValues.length != 28) {
-       //     alert("You need to select all 28 to continue");
-       // } else {
-            // submit the form
-            $('form').submit();
-        //}
+        if (selectedValues.length != 28) {
+            alert("You need to select all 28 to continue");
+        } else {
+           // submit the form
+           $('form').submit();
+        }
     });
 });

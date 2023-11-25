@@ -55,23 +55,26 @@ h2, h3 {
 }
 
 .image-container {
+    display: grid;
+    grid-template-rows: 2fr auto; /* One row for the image, one for the radio group at the bottom */
     text-align: center;
-    margin: 0 10px 20px; /* Adjust the margin as needed */
-    border: 2px solid #918f8f; /* Add a border */
-    border-radius: 8px; /* Optional: Add border radius for rounded corners */
-    padding: 10px; /* Add padding for inner spacing */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add box shadow for a subtle shading effect */
+    margin: 0 10px 20px;
+    border: 2px solid #918f8f;
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     width: 33.3%;
+    justify-content: center;
 }
 
 img {
-    width: 100%; /* Make the image fill the container */
-    height: auto; /* Maintain aspect ratio */
-    border-radius: 6px; /* Optional: Add border radius for rounded corners */
+    width: 100%;
+    height: auto;
+    border-radius: 6px;
 }
 
 label {
-    margin-right: 30px; /* Adjust the margin as needed */
+    margin: 0 15px 0 0; /* Adjust the right margin value as needed */
 }
 
 .button-container {
@@ -90,4 +93,10 @@ button {
     width: 150px; /* Adjust to a specific pixel value or use a percentage */
     font-size: 16px;
     margin: 0 auto; /* Center the button horizontally */
+}
+
+/* Add these styles for the new container */
+.radio-group {
+    display: inline-block;
+    align-items: center;
 }

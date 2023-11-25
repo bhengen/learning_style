@@ -57,8 +57,6 @@
             } else {
                 echo "No result for label: " . $val;
             }
-            
-
 
         } else {
             echo "Error reading table: " . mysqli_error($conn);

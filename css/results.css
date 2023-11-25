@@ -58,3 +58,7 @@ h2 {
     font-weight: bold;
     height: 30px;
 }
+
+.label-cell {
+    background-color: lightsteelblue;
+}

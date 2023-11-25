@@ -22,7 +22,7 @@ if (!$result) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/login.css">
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
     <title>Sign In</title>
 
 </head>
@@ -60,52 +60,53 @@ if (!$result) {
         // Close the database connection
         mysqli_close($conn);
     ?>
-<script>
-    // Attach a handler to the onpageshow event
-    window.addEventListener('pageshow', function (event) {
-        // Check if the event's persisted property is false
-        // This indicates that the page is being loaded from the cache or the back-forward cache
-        if (event.persisted) {
-            // Force a page refresh
-            location.reload();
-        }
-    });
-
-    $(document).ready(function() {
-        
-        // Clear input values on page load
-        $('#studentId').val('');
-        $('#firstName').val('');
-        $('#lastName').val('');
-        $('#classPeriod').val('');
-        
-        // Handle the change event for studentId
-        $('#studentId').change(function() {
-            var studentId = $(this).val();
-
-            if (studentId !== '') {
-                // Make your AJAX call here...
-                $.ajax({
-                    url: 'php/get_student_data.php',
-                    type: 'POST',
-                    data: { studentId: studentId },
-                    dataType: 'json', // Ensure that jQuery interprets the response as JSON
-                    success: function(studentData) {
-                        console.log('Parsed data:', studentData);
-                        // Verify that IDs match keys and log values
-                        // Set field values
-                        $('#firstName').val(studentData[0].first_name);
-                        $('#lastName').val(studentData[0].last_name);
-                        $('#classPeriod').val(studentData[0].class_period);
-                    },
-                    error: function(xhr, status, error) {
-                        console.error('Error:', status, error);
-                    }
-                });
+        <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script>
+        // Attach a handler to the onpageshow event
+        window.addEventListener('pageshow', function (event) {
+            // Check if the event's persisted property is false
+            // This indicates that the page is being loaded from the cache or the back-forward cache
+            if (event.persisted) {
+                // Force a page refresh
+                location.reload();
             }
         });
-    });
-</script>
+
+        $(document).ready(function() {
+            
+            // Clear input values on page load
+            $('#studentId').val('');
+            $('#firstName').val('');
+            $('#lastName').val('');
+            $('#classPeriod').val('');
+            
+            // Handle the change event for studentId
+            $('#studentId').change(function() {
+                var studentId = $(this).val();
+
+                if (studentId !== '') {
+                    // Make your AJAX call here...
+                    $.ajax({
+                        url: 'php/get_student_data.php',
+                        type: 'POST',
+                        data: { studentId: studentId },
+                        dataType: 'json', // Ensure that jQuery interprets the response as JSON
+                        success: function(studentData) {
+                            console.log('Parsed data:', studentData);
+                            // Verify that IDs match keys and log values
+                            // Set field values
+                            $('#firstName').val(studentData[0].first_name);
+                            $('#lastName').val(studentData[0].last_name);
+                            $('#classPeriod').val(studentData[0].class_period);
+                        },
+                        error: function(xhr, status, error) {
+                            console.error('Error:', status, error);
+                        }
+                    });
+                }
+            });
+        });
+    </script>
 
 </body>
 </html>

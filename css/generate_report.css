@@ -1,0 +1,48 @@
+body {
+    width: 100%;
+    display: grid;
+    place-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    width: 80%;
+    display: grid;
+    grid-template-rows: auto 1fr; /* Two rows: auto for the table, 1fr for the form */
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 20px;
+    align-content: center;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+.studentId {
+    width: 20%;
+}
+
+.weights {
+    width: 10%; /* Adjust the width as needed */
+}
+
+form {
+    margin-top: 20px;
+    text-align: center;
+}
+
+input[type="submit"] {
+    padding: 10px;
+    font-size: 16px;
+}

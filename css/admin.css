@@ -1,0 +1,73 @@
+body {
+    margin: 0;
+}
+
+#container {
+    display: grid;
+    grid-template-rows: auto 1fr auto; /* Header, Main Section, Footer */
+    grid-template-columns: 10% 90%; /* Sidebar, Main Body */
+    height: 100vh;
+}
+
+#header {
+    font-size: 30px;
+    color:black;
+}
+
+#header, #footer {
+    grid-column: span 2; /* Span both columns */
+    background-color: #f2f2f2;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#sidebar {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+}
+
+#main_section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #fff; /* Set background color */
+    text-align: center;
+    width: 100%; /* Set a maximum width */
+    margin: 0; /* Center the container */
+    height: calc(100% - 2 * 10px); /* Subtract the height of the header and footer */
+    box-sizing: border-box;
+}
+
+.label {
+    display: block;
+    margin-bottom: 10px;
+    text-align: left;
+}
+
+input {
+    width: calc(100% - 20px);
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+}
+
+button {
+    padding: 10px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}

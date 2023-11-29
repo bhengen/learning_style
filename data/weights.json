@@ -1,0 +1,286 @@
+{
+	"table": "Weights",
+	"rows":
+	[
+		{
+			"weight_id": 1,
+			"label": "1A",
+			"weight": 1
+		},
+		{
+			"weight_id": 2,
+			"label": "2A",
+			"weight": 5
+		},
+		{
+			"weight_id": 3,
+			"label": "3A",
+			"weight": 1
+		},
+		{
+			"weight_id": 4,
+			"label": "4A",
+			"weight": 7
+		},
+		{
+			"weight_id": 5,
+			"label": "5A",
+			"weight": 4
+		},
+		{
+			"weight_id": 6,
+			"label": "6A",
+			"weight": 1
+		},
+		{
+			"weight_id": 7,
+			"label": "7A",
+			"weight": 5
+		},
+		{
+			"weight_id": 8,
+			"label": "8A",
+			"weight": 1
+		},
+		{
+			"weight_id": 9,
+			"label": "9A",
+			"weight": 2
+		},
+		{
+			"weight_id": 10,
+			"label": "10A",
+			"weight": 5
+		},
+		{
+			"weight_id": 11,
+			"label": "11A",
+			"weight": 1
+		},
+		{
+			"weight_id": 12,
+			"label": "12A",
+			"weight": 1
+		},
+		{
+			"weight_id": 13,
+			"label": "13A",
+			"weight": 3
+		},
+		{
+			"weight_id": 14,
+			"label": "14A",
+			"weight": 3
+		},
+		{
+			"weight_id": 15,
+			"label": "15A",
+			"weight": 7
+		},
+		{
+			"weight_id": 16,
+			"label": "16A",
+			"weight": 2
+		},
+		{
+			"weight_id": 17,
+			"label": "17A",
+			"weight": 5
+		},
+		{
+			"weight_id": 18,
+			"label": "18A",
+			"weight": 5
+		},
+		{
+			"weight_id": 19,
+			"label": "19A",
+			"weight": 4
+		},
+		{
+			"weight_id": 20,
+			"label": "20A",
+			"weight": 2
+		},
+		{
+			"weight_id": 21,
+			"label": "21A",
+			"weight": 1
+		},
+		{
+			"weight_id": 22,
+			"label": "22A",
+			"weight": 6
+		},
+		{
+			"weight_id": 23,
+			"label": "23A",
+			"weight": 2
+		},
+		{
+			"weight_id": 24,
+			"label": "24A",
+			"weight": 3
+		},
+		{
+			"weight_id": 25,
+			"label": "25A",
+			"weight": 1
+		},
+		{
+			"weight_id": 26,
+			"label": "26A",
+			"weight": 4
+		},
+		{
+			"weight_id": 27,
+			"label": "27A",
+			"weight": 2
+		},
+		{
+			"weight_id": 28,
+			"label": "28A",
+			"weight": 7
+		},
+		{
+			"weight_id": 29,
+			"label": "1B",
+			"weight": 4
+		},
+		{
+			"weight_id": 30,
+			"label": "2B",
+			"weight": 6
+		},
+		{
+			"weight_id": 31,
+			"label": "3B",
+			"weight": 7
+		},
+		{
+			"weight_id": 32,
+			"label": "4B",
+			"weight": 2
+		},
+		{
+			"weight_id": 33,
+			"label": "5B",
+			"weight": 6
+		},
+		{
+			"weight_id": 34,
+			"label": "6B",
+			"weight": 3
+		},
+		{
+			"weight_id": 35,
+			"label": "7B",
+			"weight": 4
+		},
+		{
+			"weight_id": 36,
+			"label": "8B",
+			"weight": 6
+		},
+		{
+			"weight_id": 37,
+			"label": "9B",
+			"weight": 4
+		},
+		{
+			"weight_id": 38,
+			"label": "10B",
+			"weight": 7
+		},
+		{
+			"weight_id": 39,
+			"label": "11B",
+			"weight": 5
+		},
+		{
+			"weight_id": 40,
+			"label": "12B",
+			"weight": 2
+		},
+		{
+			"weight_id": 41,
+			"label": "13B",
+			"weight": 6
+		},
+		{
+			"weight_id": 42,
+			"label": "14B",
+			"weight": 7
+		},
+		{
+			"weight_id": 43,
+			"label": "15B",
+			"weight": 6
+		},
+		{
+			"weight_id": 44,
+			"label": "16B",
+			"weight": 6
+		},
+		{
+			"weight_id": 45,
+			"label": "17B",
+			"weight": 2
+		},
+		{
+			"weight_id": 46,
+			"label": "18B",
+			"weight": 3
+		},
+		{
+			"weight_id": 47,
+			"label": "19B",
+			"weight": 7
+		},
+		{
+			"weight_id": 48,
+			"label": "20B",
+			"weight": 4
+		},
+		{
+			"weight_id": 49,
+			"label": "21B",
+			"weight": 7
+		},
+		{
+			"weight_id": 50,
+			"label": "22B",
+			"weight": 5
+		},
+		{
+			"weight_id": 51,
+			"label": "23B",
+			"weight": 3
+		},
+		{
+			"weight_id": 52,
+			"label": "24B",
+			"weight": 4
+		},
+		{
+			"weight_id": 53,
+			"label": "25B",
+			"weight": 3
+		},
+		{
+			"weight_id": 54,
+			"label": "26B",
+			"weight": 6
+		},
+		{
+			"weight_id": 55,
+			"label": "27B",
+			"weight": 5
+		},
+		{
+			"weight_id": 56,
+			"label": "28B",
+			"weight": 3
+		}
+	]
+}

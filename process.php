@@ -27,7 +27,7 @@
     $classPeriod = $_POST['classPeriod'];
     $labels = explode(',',$_POST['selectedItems']);
 
-    $allQuery = "SELECT label, weight FROM Weights";
+    $allQuery = "SELECT question_number, weight FROM weights";
     $allResult = mysqli_query($conn, $allQuery);
 
     $weights = [];
@@ -47,7 +47,7 @@
         }
 
         // create the weight table from the select labels
-        $query = "SELECT weight FROM `Weights` WHERE label = '" . $val . "'";
+        $query = "SELECT weight FROM `weights` WHERE question_number = '" . $val . "'";
         $result = mysqli_query($conn, $query);
     
         if ($result) {
@@ -79,7 +79,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Learning Style Results Page</title>
-    <link href="./css/results.css" rel="stylesheet"></style>
+    <link href="./css/results.css" rel="stylesheet"></link>
 </head>
 <body>
     <h2>Learning Style Results Page</h2>

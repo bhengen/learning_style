@@ -76,6 +76,44 @@ $(document).ready(function () {
         currentRow.appendChild(imageContainer);
     }
 
+    $('input[type="radio"]').on('click', function() {
+        // Get the selected radio button's value
+        const buttonValue = $(this).val();
+
+        // Get the picture number from the radio button's name attribute
+        const pictureNumber = parseInt($(this).attr('name').match(/\d+/)[0], 10);
+        console.log('Picture Number:', pictureNumber);
+        
+        // Concatenate picture number, option, and student ID
+        const question_number = pictureNumber.toString() + buttonValue;
+        console.log('Question Number:', question_number);
+        
+        let student_id = $('#studentId').text();
+        console.log(student_id);
+
+        let matchResult = student_id.match(/[^\D]+/);
+        if(matchResult) {
+            student_id = matchResult[0];
+        } else {
+            console.log('error extracting student id');
+        }
+
+        // Use AJAX to send the selected value to the server
+        $.ajax({
+            type: 'POST',
+            url: 'php/track_questions_completed.php', // Adjust the path to your PHP script
+            data: { studentId: student_id, question_number: question_number},
+            success: function(response) {
+                console.log('Data sent to server successfully');
+                console.log(response); // Log any response from the server
+                // Update UI or perform other actions as needed
+            },
+            error: function(error) {
+                console.error('Error sending data to server:', error);
+            }
+        });
+    })
+
     // Submit form when the submit button is clicked
     document.getElementById('submitButton').addEventListener('click', function(event) {
         const exp = /\d+/; // extract the image number from the full image name
@@ -96,7 +134,7 @@ $(document).ready(function () {
         selectedButtons.forEach(function(button) {
             const imageName = button.name;
             let itemSelected = parseInt(imageName.match(exp),10).toString() + button.value;
-            console.log(itemSelected);
+            //console.log(itemSelected);
 
             selectedValues.push(itemSelected);
         });
@@ -108,9 +146,28 @@ $(document).ready(function () {
 
         if (selectedValues.length != 28) {
             alert("You need to select all 28 to continue");
-        } else {
+        } else if (selectedValues.length === 28) {
            // submit the form
            $('form').submit();
+        } else {
+            sendSelectedValuesToServer(selectedValues);
         }
     });
+    
+    function sendSelectedValuesToServer(selectedValues) {
+        // Use AJAX to send the data to the server
+        $.ajax({
+            type: 'POST',
+            url: 'path/to/your/server-script.php', // Adjust the path to your PHP script
+            data: { selectedValues: selectedValues },
+            success: function(response) {
+                console.log('Data sent to server successfully');
+                console.log(response); // Log any response from the server
+                // Redirect or perform other actions as needed
+            },
+            error: function(error) {
+                console.error('Error sending data to server:', error);
+            }
+        });
+    }
 });

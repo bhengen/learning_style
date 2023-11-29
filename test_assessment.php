@@ -90,7 +90,7 @@
     echo "<table id='resultsTable'>";
     echo "<thead>";
         echo "<tr>";
-        echo "<th colspan='9' id='header-label'>Selected Labels with their corresponding weights</th>";
+        echo "<th colspan='9' id='header-label'>Selected ft5ryu679Labels with their corresponding weights</th>";
         echo "</tr>";
         echo "</thead>";
     echo "<tbody>";

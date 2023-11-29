@@ -97,6 +97,32 @@ button {
 
 /* Add these styles for the new container */
 .radio-group {
-    display: inline-block;
+    display: flex;
+    flex-direction: row; /* Display radio buttons horizontally */
     align-items: center;
+    justify-content: center;
+}
+
+/* Style for individual radio buttons */
+.radio-group input[type="radio"] {
+    margin: 0 5px; /* Adjust the margin between radio buttons as needed */
+}
+/* Media query for screens up to 767 pixels wide (typical for mobile devices) */
+@media (max-width: 767px) {
+    /* Add these styles for the new container */
+
+    .radio-group {
+        display: flex;
+        flex-direction: column; /* Display radio buttons vertically */
+        align-items: center;
+        min-width: 200px;
+        white-space: nowrap;
+    }
+
+    /* Style for individual radio buttons */
+    .radio-group input[type="radio"] {
+        margin: 5px; /* Adjust the margin for vertical spacing as needed */
+        min-width: 20%;
+    }
+
 }

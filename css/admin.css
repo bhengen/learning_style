@@ -5,7 +5,7 @@ body {
 #container {
     display: grid;
     grid-template-rows: auto 1fr auto; /* Header, Main Section, Footer */
-    grid-template-columns: 10% 90%; /* Sidebar, Main Body */
+    grid-template-columns: 13% 97%; /* Sidebar, Main Body */
     height: 100vh;
 }
 
@@ -26,7 +26,7 @@ body {
 #sidebar {
     background-color: #333;
     color: #fff;
-    padding: 10px;
+    padding: 1px;
 }
 
 #main_section {
@@ -70,4 +70,49 @@ button {
 
 button:hover {
     background-color: #45a049;
+}
+
+/* Container styles */
+.header_container {
+    display: grid;
+    grid-template-columns: 90% 10%;
+    align-items: center;
+    padding: 10px;
+    width: 80%;
+}
+
+/* Title styles */
+.title {
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 40px;   
+}
+
+/* Apply styles to the link to make it look like a button */
+.button-like-link {
+    justify-content: right;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    background-color: #4CAF50; /* Green background color */
+    color: white; /* White text color */
+    border: 1px solid #4CAF50; /* Green border color */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer;
+    height: 20px;
+    width: 50px;
+    font-size: 15px;
+}
+
+/* Add hover effect */
+.button-like-link:hover {
+    background-color: #45a049;
+}
+
+.item {
+    text-align: leftr;
+    font-size: 15px;
+    font-family: Arial, Helvetica, sans-serif;
+    list-style-type: none;
+    padding-bottom: 5px;
 }

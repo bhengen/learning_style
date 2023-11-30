@@ -9,6 +9,7 @@
     // Set the page based on a request parameter or session variable
     $page = isset($_POST['page']) ? $_POST['page'] : (isset($_SESSION['page']) ? $_SESSION['page'] : 'login');
     $_SESSION['page'] = $page;
+
 ?>
 <!DOCTYPE html>
 <html lang="en">

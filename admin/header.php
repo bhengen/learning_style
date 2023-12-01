@@ -2,9 +2,9 @@
     $page = $_SESSION['page'];
 
     echo "<div class='header_container'>";
-        if($page === 'teacher') {
+        if($page === 'admin') {
             echo "<h2 class='title'>Teacher Administration Page</h2>"; 
-        } else if($page === 'student') {
+        } else if($page === 'teacher') {
             echo "<h2 class='title'>Student Administration Page</h2>";
         } else {
             echo "<h2 class='title'>Teacher / Admin Login Page</h2>";

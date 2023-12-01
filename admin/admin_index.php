@@ -11,24 +11,24 @@
     $_SESSION['page'] = $page;
 
 ?>
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/admin.css">
+    <link rel="stylesheet" href="../css/student_list.css">
+
     <?php 
-        if($page === 'teacher') {
+        if($page === 'admin') {
             echo "<title>Teacher Admin Page</title>";
-        } else if ($page === "student") {
-            echo "<title>Student Page</title>"; 
+        } else if ($page === "teacher") {
+            echo "<title>Student Admin Page</title>"; 
          } else { 
             echo "<title>Login Page</title>";
         }
     ?>
 </head>
 <body>
-
     <div id="container">
         <header id="header">
             <?php include_once("header.php"); ?>
@@ -37,9 +37,9 @@
             <?php include_once("sidebar.php"); ?>
         </div>
         <div id="main_section">
-            <?php if($page === 'teacher' ) {
+            <?php if($page === 'admin' ) {
                     include_once('teacher_admin.php');
-                  } else if ($page === 'student') {
+                  } else if ($page === 'teacher') {
                     include_once('student_admin.php');
                   } else {
                     include_once('admin_login.html');
@@ -50,5 +50,6 @@
             <?php include_once("footer.php"); ?>
         </div>
     </div>
+    <script src="../scripts/admin.js"></script>
 </body>
 </html>

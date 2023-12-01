@@ -1,5 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../css/process_students.css" rel="stylesheet">
+     <title>Processing Student Record</title>
+
+</head>
+<body>
+
 <?PHP
 // program to update the student record
 // called from display_student_data.php
@@ -96,4 +105,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <!-- Button to go back to the student_list sheet -->
 <a href="display_student_data.php" class="back-button">Back to Student Modification Page</a>
+
+</body>
 </html>

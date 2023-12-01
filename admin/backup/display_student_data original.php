@@ -9,12 +9,23 @@
     $_SESSION['blank_card_displayed'] = $_SESSION['blank_card_displayed'] ?? false; // set the initial blank card flag to false
 ?>
 
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../css/student_list.css" rel="stylesheet">
+    <title>Student Data Processing Form</title>
+</head>
+
+<body>
+
+    <h1>Student Modification Form</h1>
     <div class="container">
 
         <?php function generateStudentForm($action, $data = []) { ?>
             
             <div class='student-row'>
-            <form action='update_student_record.php' method='post' class='student-form' onsubmit='return handleFormSubmit()' ?>
+            <form action='update_student_record.php' method='post' 'id='studentForm' onsubmit='return handleFormSubmit()' ?>
             <input type='hidden' name='submit_action' value='<?php echo $action; ?>'>
                     <?php foreach ($data as $key => $value): ?>
                         <label for='<?php echo $key; ?>'><?php echo ucwords(str_replace('_', ' ', $key)); ?>:</label>
@@ -86,3 +97,31 @@
             mysqli_close($conn);
         ?>
     </div>
+
+    <script>
+        function handleFormSubmit() {
+            var submitAction;
+
+            if (document.activeElement.id === 'updateBtn') {
+                // Update button clicked
+                submitAction = 'update';
+            } else if (document.activeElement.id === 'deleteBtn') {
+                // Delete button clicked
+                var confirmed = confirm("Are you sure you want to delete this record?");
+                if (confirmed) {
+                    submitAction = 'delete';
+                } else {
+                    // Cancel clicked, prevent form submission
+                    return false;
+                }
+            }
+
+            // Set the action in a hidden input field
+            document.getElementById('submit_action').value = submitAction;
+
+            // Continue with form submission
+            return true;
+        }
+</script>
+</body> 
+</html>

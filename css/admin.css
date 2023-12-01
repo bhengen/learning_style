@@ -21,6 +21,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    border: 1px solid lightgray;
 }
 
 #sidebar {
@@ -31,15 +32,13 @@ body {
 
 #main_section {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
-    border: 1px solid #ccc;
-    padding: 20px;
-    border-radius: 10px;
+    padding: 15px;
     background-color: #fff; /* Set background color */
     text-align: center;
-    width: 100%; /* Set a maximum width */
-    margin: 0; /* Center the container */
+    width: 75%; /* Set a maximum width */
+    margin: 1% 0 0 0; /* Center the container */
     height: calc(100% - 2 * 10px); /* Subtract the height of the header and footer */
     box-sizing: border-box;
 }
@@ -48,6 +47,7 @@ body {
     display: block;
     margin-bottom: 10px;
     text-align: left;
+    align-items: center;
 }
 
 input {
@@ -66,6 +66,9 @@ button {
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    width: 100px;
+    height: 50px;
+    font-size: 20px;
 }
 
 button:hover {
@@ -109,10 +112,46 @@ button:hover {
     background-color: #45a049;
 }
 
+ul {
+    margin: 0; /* Reset default margin */
+    padding: 0; /* Reset default padding */
+}
+
 .item {
-    text-align: leftr;
+    text-align: left;
     font-size: 15px;
     font-family: Arial, Helvetica, sans-serif;
     list-style-type: none;
     padding-bottom: 5px;
+}
+
+.item:nth-child(2) {
+    border-bottom: 1px solid #ccc;
+}
+
+.item:nth-child(3) {
+    padding-top: 5px;
+}
+
+.item:hover {
+    background-color: #555; /* Adjust color on hover as needed */
+}
+
+#side-container {
+    display: flex;
+    width:100%;
+}
+
+#left {
+    width: 10%;
+    height: 100vh;
+    background-color: #ddd; /* Light grey background color */
+}
+
+#right {
+    width: 90%;
+    background-color: #333; /* Dark background color */
+    color: white; /* Text color */
+    padding: 20px; /* Adjust padding as needed */
+    box-shadow: 2px 2px 0 rgba(255, 255, 255, 255) inset; /* Inset box shadow */
 }

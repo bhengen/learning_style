@@ -7,14 +7,14 @@
             <ul id='menu'>
     ";
             if($page === 'admin') {
-                echo "<li class='item' data-page='list-teacher'>List Teacher</li>
-                      <li class='item' data-page='teacher-maintenance'>Teacher Maintenance</li>
-                      <li class='item' data-page='display_student_data'>List Student</li>
-                      <li class='item' data-page='display_student_data'>Student Maintenance</li>";
+                echo "<li class='item' data-page='list_teacher_records'>List Teacher</li>
+                      <li class='item' data-page='process_students'>Teacher Maintenance</li>
+                      <li class='item' data-page='process_students'>List Student</li>
+                      <li class='item' data-page='process_students'>Student Maintenance</li>";
         
             } else if ($page === 'teacher') {
-                echo "<li class='item' data-page='display_student_data'>List Student</li>
-                      <li class='item' data-page='display_student_data'>Student Maintenance</li>";
+                echo "<li class='item' data-page='list_students'>List Student</li>
+                      <li class='item' data-page='process_students'>Student Maintenance</li>";
               } else {
                 // display nothing
             }

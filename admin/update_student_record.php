@@ -1,5 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
 <?PHP
 // program to update the student record
 // called from display_student_data.php
@@ -84,16 +82,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 
 ?>
-<h2><?PHP echo"Processing Record for Student: {$firstName} {$lastName}; Action=".ucwords($submitAction)?></h2>
-
-<div class="result-card <?php echo isset($e) ? 'error' : 'success'; ?>">
-    <h2><?php echo isset($e) ? 'Error' : 'Success'; ?></h2>
-    <p><?php echo $resultMessage; ?></p>
-    <?php if (isset($e) || isset($resultInfo)) : ?>
-        <p><?php echo isset($resultInfo) ? $resultInfo : 'An unexpected error occurred.'; ?></p>
-    <?php endif; ?>
-</div>
-
-<!-- Button to go back to the student_list sheet -->
-<a href="display_student_data.php" class="back-button">Back to Student Modification Page</a>
-</html>

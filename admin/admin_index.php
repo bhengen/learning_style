@@ -31,7 +31,7 @@
 <body>
     <div id="container">
         <header id="header">
-            <?php include_once("header.php"); ?>
+            <?php include("header.php"); ?>
         </header>
         <div id="sidebar">
             <?php include_once("sidebar.php"); ?>

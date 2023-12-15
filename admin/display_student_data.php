@@ -1,5 +1,4 @@
 <?php
-    session_start();
 
     error_reporting(E_ALL);
     ini_set('display_errors', 1);
@@ -9,7 +8,7 @@
     $_SESSION['blank_card_displayed'] = $_SESSION['blank_card_displayed'] ?? false; // set the initial blank card flag to false
 ?>
 
-    <div class="container">
+    <div class="display_container">
 
         <?php function generateStudentForm($action, $data = []) { ?>
             

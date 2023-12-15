@@ -1,13 +1,14 @@
 
-// get the name of the page to by dynaically loaded into the main section
-// called from admin_index.php
+//get the name of the page to by dynaically loaded into the main section
+//called from admin_index.php
 const menu = document.getElementById('menu');
 const mainContent = document.getElementById('main_section');
 
 menu.addEventListener('click', async function (event) {
  
+    event.preventDefault(); // Prevent the default behavior of the link
+
     const targetPage = event.target.dataset.page;
-    console.log(event.target);
 
     if (targetPage) {
         try {
@@ -16,13 +17,19 @@ menu.addEventListener('click', async function (event) {
             const content = await response.text();
 
             // Insert the HTML content into the main-content div
+            //console.log(content);
             mainContent.innerHTML = content;
+            
+            // Dynamically create and append a script tag
+            const script = document.createElement('script');
+            script.src = '../scripts/alert.js';
+             document.head.appendChild(script);
+             
         } catch (error) {
             console.error(`Error loading content for ${targetPage}:`, error);
         }
     }
 });
-
 
 // process the student record
 // called from display_student_data.php
@@ -50,38 +57,37 @@ function handleFormSubmit() {
     return true;
 }
 
-// load the page into the main_section div tag on the admin_index.php page
-
+// Event listener for menu clicks
 document.addEventListener('DOMContentLoaded', function () {
-    // Get all forms with the 'student-form' class
-    const studentForms = document.querySelectorAll('.student-form');
-    mainContent.innerText = "HELLO WORLD";
 
-    // Attach a submit event listener to each form
-    studentForms.forEach(form => {
-        form.addEventListener('submit', async function (event) {
-            event.preventDefault(); // Prevent the default form submission
-
-            // Get form data
-            const formData = new FormData(form);
-
+    menu.addEventListener('click', async function (event) {
+        const targetPage = event.target.dataset.page;
+    
+        if (targetPage) {
             try {
-                // Fetch data from the server
-                const response = await fetch(form.action, {
-                    method: 'POST',
-                    body: formData,
-                });
-
-                // Check if the response is successful
-                if (response.ok) {
-                    // Update the main section content with the response
-                    mainSection.innerHTML = await response.text();
-                } else {
-                    console.error('Error:', response.statusText);
-                }
+                // Dynamically load JavaScript files
+                loadScript('../scripts/admin.js');
+    
+                // Fetch HTML content from the server
+                const response = await fetch(`${targetPage}.php`);
+                const content = await response.text();
+    
+                // Insert the HTML content into the main-content div
+                mainContent.innerHTML = content;
             } catch (error) {
-                console.error('Error:', error);
+                console.error(`Error loading content for ${targetPage}:`, error);
             }
-        });
+        }
     });
 });
+
+function loadScript(src) {
+    const script = document.createElement('script');
+    script.src = src;
+    //script.type = 'text/javascript';
+    script.onload = function () {
+        // Script has loaded
+        console.log(`Script ${src} has been loaded.`);
+    };
+    document.head.appendChild(script);
+}

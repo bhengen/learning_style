@@ -6,10 +6,11 @@ body {
     display: grid;
     grid-template-rows: auto 1fr auto; /* Header, Main Section, Footer */
     grid-template-columns: 13% 97%; /* Sidebar, Main Body */
-    height: 100vh;
+    height: 100%;
+    width: 100%;
 }
 
-#header {
+header {
     font-size: 30px;
     color:black;
 }
@@ -24,24 +25,31 @@ body {
     border: 1px solid lightgray;
 }
 
+#footer {
+    margin-top: auto;
+}
+
 #sidebar {
     background-color: #333;
     color: #fff;
     padding: 1px;
 }
 
+#loginForm {
+    width: 35%;
+    margin: 0 auto;
+
+}
+
 #main_section {
-    display: flex;
-    align-items: flex-start;
+    align-items: center;
     justify-content: center;
     padding: 15px;
-    background-color: #fff; /* Set background color */
+    background-color: #fff;
     text-align: center;
-    width: 75%; /* Set a maximum width */
-    margin: 1% 0 0 0; /* Center the container */
-    height: calc(100% - 2 * 10px); /* Subtract the height of the header and footer */
-    box-sizing: border-box;
-}
+    width: 90%;
+    height: 95%;
+ }
 
 .label {
     display: block;
@@ -85,7 +93,7 @@ button:hover {
 }
 
 /* Title styles */
-.title {
+#title {
     text-align: center;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 40px;   
@@ -154,4 +162,32 @@ ul {
     color: white; /* Text color */
     padding: 20px; /* Adjust padding as needed */
     box-shadow: 2px 2px 0 rgba(255, 255, 255, 255) inset; /* Inset box shadow */
+}
+
+#teacher_list_table {
+    width: 90%;
+    border-collapse: collapse;
+    justify-content: center;
+    margin-left: 20px;
+    background-color: #fff; /* Set background color to white */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
+}
+
+.teacher_list_header {
+    background-color: darkslategray; /* Set background color to green */
+    color: white;
+    padding: 10px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.teacher_list_data {
+    padding: 10px;
+    text-align: center;
+    border-bottom: 1px solid #ddd; /* Add a border to separate rows */
+}
+
+/* Alternate row background color for a green bar paper effect */
+#teacher_list_table tr:nth-child(even) {
+    background-color: #f2f2f2; /* Set a light green color */
 }

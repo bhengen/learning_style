@@ -1,0 +1,29 @@
+#studentPctContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    width: 50%;
+
+  }
+
+  #chartDiv {
+    /* Add styles for the chart container */
+    align-items: center;
+    margin: 0;
+    padding: 0;
+  }
+  
+  #tableDiv {
+    /* Add styles for the table container */
+    justify-items: left;
+    padding: 0;
+    margin: 0;
+  }
+
+  #mostAnsweredOptionContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    justify-content: center;
+  }
+
+

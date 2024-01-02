@@ -1,29 +1,76 @@
-#studentPctContainer {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    width: 50%;
+.container {  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 0.3fr 0.7fr repeat(2, 0.8fr) 2.4fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "header header"
+    "percent-left most-answers-selected-by-student"
+    "most-options-selected-by-student most-answers-selected-by-student"
+    "most-options-selected-by-period most-answers-selected-by-student"
+    "frequency frequency";
+  width: 80%;
+  justify-self: center;
+}
 
-  }
+.header {
+  grid-area: header;
+  height: 50px;
+  justify-self: center;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 30px;
+  font-weight: bold;
+}
 
-  #chartDiv {
-    /* Add styles for the chart container */
-    align-items: center;
-    margin: 0;
-    padding: 0;
-  }
-  
-  #tableDiv {
-    /* Add styles for the table container */
-    justify-items: left;
-    padding: 0;
-    margin: 0;
-  }
+.percent-left { 
+  grid-area: percent-left; 
+  margin: 0;
+  padding: 0;
+  justify-self: center;
+  vertical-align: top;;
+}
 
-  #mostAnsweredOptionContainer {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    align-items: center;
-    justify-content: center;
-  }
+.questions_not_answered { 
+  grid-area: most-options-selected-by-student; 
+  align-items: start;
+  justify-self: center;
+  height: 150px;
+}
 
+.most-options-selected-by-period { 
+  grid-area: most-options-selected-by-period;
+  align-items: start;
+  justify-self: center;
+  height: 200px;
+  margin-top: 20px;
+  margin-bottom: 0px;
+}
+
+.frequency {
+  grid-area: frequency;
+  height: 500px;
+  margin-top: -300px;
+  padding-top: 0px;
+  justify-self:center;
+  align-items: start;
+}
+
+.not-answered-most-option-container {
+  justify-self: center;
+  align-items: start;
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+}
+
+.most-answers-selected-by-student { 
+  grid-area: most-answers-selected-by-student; 
+  justify-self: center;
+  align-items: start;
+  height: 500px;
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+}
 

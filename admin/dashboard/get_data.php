@@ -54,12 +54,12 @@
         FROM questions_completed 
         GROUP BY question_number 
         ORDER BY answer_count DESC;";
+
     $result = mysqli_query($conn, $query);
     $mostAnsweredQuestions = array();
     while ($row = mysqli_fetch_assoc($result)) {
         $mostAnsweredQuestions[$row['question_number']] = $row['answer_count'];
     }
-
 
     // get the option (a or b) selected most by each student
     $query = "SELECT qc.student_id, CONCAT(first_name, ' ', last_name) AS student_name, 
@@ -68,7 +68,7 @@
         LEFT JOIN students s 
         ON s.student_id = qc.student_id 
         GROUP BY qc.student_id, selected_option 
-        ORDER BY qc.student_id, selected_option ASC;";
+        ORDER BY qc.student_id, selected_option DESC;";
     $result = mysqli_query($conn, $query);
 
     while ($row = mysqli_fetch_assoc($result)) {
@@ -80,7 +80,7 @@
         );
     }
 
-    // get the total option count for a and by by student
+    // get the total option count for a and b by student
     $query = "SELECT 
             CONCAT(first_name, ' ', last_name) AS student_name, 
             COALESCE(SUM(RIGHT(qc.question_number,1) = 'A'),0) AS total_option_a, 
@@ -132,8 +132,6 @@
             'column_total' => $row['column_totals']
         );
     }
-
-
 
     // Encode the results as JSON for JavaScript consumption
     $output = [

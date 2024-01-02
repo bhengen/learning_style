@@ -26,6 +26,7 @@
     $lastName = $_POST['lastName'];
     $classPeriod = $_POST['classPeriod'];
     $labels = explode(',',$_POST['selectedItems']);
+    $currentYear = $_POST['currentYear'];
 
     $allQuery = "SELECT question_number, weight FROM weights";
     $allResult = mysqli_query($conn, $allQuery);

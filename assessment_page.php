@@ -15,6 +15,7 @@
     <br/>
     <div class="studentInformation">
         <?PHP
+            $current_year = date("Y");
             echo "<p id='studentId'>Student Id: " . $_POST['studentId'] . "</p>".
                  "<p>First Name: " . $_POST['firstName'] . "</p> ".
                  "<p>Last Name: " . $_POST['lastName'] . "</p> ".
@@ -30,6 +31,7 @@
         <input type="hidden" name="firstName" value="<?php echo $_POST['firstName']; ?>">
         <input type="hidden" name="lastName" value="<?php echo $_POST['lastName']; ?>">
         <input type="hidden" name="classPeriod" value="<?php echo $_POST['classPeriod']; ?>">
+        <input type="hidden" name="currentYear" value="<?php echo $current_year;?>">
         <input type="hidden" id="selected_items" name="selectedItems">
         <!-- Submit button -->
         <div class="button-container">

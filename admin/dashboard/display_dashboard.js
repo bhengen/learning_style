@@ -16,12 +16,14 @@ fetch('get_data.php')
     displayStudentPercentage(studentPercentages)
     //document.getElementById('studentPercentages').innerText = studentPercentages;
 
+    // get the questions that the student hasn't completed yet
+    const unansweredQuestions = JSON.stringify(data.percentCompleted);
     // build the table for the questions the  studen hasn't answered
-    displayUnansweredTable(studentPercentages);
+    displayUnansweredTable(unansweredQuestions);
 
-    // get the most answered question
-    const mostAnsweredQuestions = JSON.stringify(data.mostAnsweredQuestions);
-    displayMostAnsweredQuestion(mostAnsweredQuestions);
+    // get the answer frequency
+    const questionFrequency = JSON.stringify(data.mostAnsweredQuestions);
+    displayQuestionFrequency(questionFrequency);
     //document.getElementById('mostAnsweredQuestions').innerText = mostAnsweredQuestions
 
     // get the most answered option by student
@@ -79,12 +81,12 @@ function displayStudentPercentage(studentPercentages) {
     title: {
       text: '<b>Percentage left for students to complete the assessment</b>',
       font: { 
-        family: 'Courier New, Monospace',
-        size: 12,
+        family: 'Arial, Serif',
+        size: 14,
       },
       title: 'Unanswered Questions',
     },
-    margin: { t: 30, b: 50, l: 0, r: 0 }, // Set all margins to zero
+    margin: { t: 30, b: 30, l: 20, r: 0 }, // Set all margins to zero
     xaxis: {
       family: 'Arial',
       size: 6,
@@ -95,41 +97,39 @@ function displayStudentPercentage(studentPercentages) {
       size: 8,
       color: '#000000',
     },
-    width: 450,  // Set the width of the chart
-    height: 200,  // Set the height of the chart.
+    width: 600,  // Set the width of the chart
+    height: 300,  // Set the height of the chart.
   
   };
 
   const data = [trace];
-  Plotly.newPlot('chartDiv', data, layout, {displayModeBar: false});
+  Plotly.newPlot('percent-left', data, layout, {displayModeBar: false});
 }
 
-function displayUnansweredTable(studentPercentages) {
+// function to build the table for which question not answered by the student
+function displayUnansweredTable(unansweredQuestions) {
 
- const jsonData = JSON.parse(studentPercentages);
+ const jsonData = JSON.parse(unansweredQuestions);
 
   // Arrays to store extracted data
   let studentNames = [];
-  let pctCompleted = [];
-  let unansweredQuestions = [];
+  let questions_not_answered = [];
 
   // Extracting data from JSON
   jsonData.forEach(function(item) {
     studentNames.push(item.student_name);
-    pctCompleted.push(item.pct_completed);
-    unansweredQuestions.push(item.unanswered_questions);
-
+    questions_not_answered.push(item.unanswered_questions);
   });
   const layout_table  = {
     
     font: { 
       family: 'Arial, Serif',
-      size: 10,
+      size: 12,
     },
     height: 300,
     width: 450,
-    title: '<b>Total number of unanswered questions by students</b>',
-    margin: { t:0, b: 0, l: 0, r: 0 }, // Set all margins to zero
+    title: 'Questions Need To Be Answered.',
+    margin: { t:30, b: 30, l: 10, r: 10}, // Set all margins to zero
    };
 
   // build the table
@@ -144,7 +144,7 @@ function displayUnansweredTable(studentPercentages) {
       height: 20,
     },
     cells: {
-      values: [studentNames, unansweredQuestions],
+      values: [studentNames, questions_not_answered],
       align: ["center", "center"],
       line: {color: "black", width: 1},
       font: {family: "Arial Bold", size: 10, color: ["black"]},
@@ -154,21 +154,27 @@ function displayUnansweredTable(studentPercentages) {
   }];
 
 
-  Plotly.newPlot('tableDiv', tableData, layout_table, {displayModeBar: false});
+  Plotly.newPlot('questions_not_answered', tableData, layout_table, {displayModeBar: false});
 
 }
 
-function displayMostAnsweredQuestion(mostAnsweredQuestions) {
+// function to display the frequency of questions answered
+function displayQuestionFrequency(questionFrequency) {
 
 
-  const jsonData = JSON.parse(mostAnsweredQuestions);
+  const jsonData = JSON.parse(questionFrequency);
+
+
   const questionFrequencies = Object.entries(jsonData).map(([questionId, frequency]) => ({
     questionId, frequency: parseInt(frequency),
   }));
 
+  
   // Sorting by frequency in descending order
   questionFrequencies.sort((a, b) => b.frequency - a.frequency);
-  
+
+  console.log(questionFrequencies);
+
   // Extracting data for Plotly chart
   const questionIds = questionFrequencies.map(item => item.questionId);
   const frequencies = questionFrequencies.map(item => item.frequency);
@@ -182,21 +188,26 @@ function displayMostAnsweredQuestion(mostAnsweredQuestions) {
   };
   
   const layout = {
-    title: 'Question Number Frequencies',
+    title: 'Question Numbers Frequencies',
     xaxis: {
       title: 'Frequency',
       range: [1,30],
     },
     yaxis: {
       title: 'Question Number',
+      autorange: 'reversed',
     },
     width: 1000,
+    height: 1000,
+    paper_bgcolor: 'rgba(255,255,255,0)',
+    plot_bgcolor: 'rgba(255,255,255,0)',
   };
   
   const chartData = [trace];
-  Plotly.newPlot('mostAnsweredQuestions', chartData, layout);
+  Plotly.newPlot('frequency', chartData, layout);
 }
 
+// function to  display the most ansewred option by stuiden
 function displayMostAnsweredOptionByStudent(mostAnsweredOptionByStudent) {
   
   const jsonData = JSON.parse(mostAnsweredOptionByStudent);
@@ -219,18 +230,18 @@ function displayMostAnsweredOptionByStudent(mostAnsweredOptionByStudent) {
       family: 'Arial, Serif',
       size: 12,
     },
-    margin: { t: 30, b: 50, l: 0, r: 0 }, // Set all margins to zero
+    text: '<b>Total number of Options (A or B) by students</b>',
+    margin: { t: 30, b: 30, l: 10, r: 10 }, // Set all margins to zero
     width: 600,
-    height: 1000,
+    height: 750,
     title: 'Most Selected Options By Student',
   };
 
   // build the table
   const tableData = [{
     type: 'table',
-    text: '<b>Total number of unanswered questions by students</b>',
-    name: 'Total number of unanswered questions by students',
-    columnwidth:[50,30,30,10],
+    name: 'Total number of Options (A or B) by students',
+    columnwidth:[50,25,25,25],
     header: {
       values: ['Student Name', 'Totals Options A', 'Totals Option B', 'Total'],
       align: "center",
@@ -241,7 +252,7 @@ function displayMostAnsweredOptionByStudent(mostAnsweredOptionByStudent) {
     },
     cells: {
       values: [studentNames, totalOptionA,totalOptionB, columnTotal],
-      align: ["center", "left"],
+      align: ["center", "center"],
       line: {color: "black", width: 1},
       font: {family: "Arial Bold", size: 10, color: ["black"]},
       height: 20,
@@ -249,9 +260,8 @@ function displayMostAnsweredOptionByStudent(mostAnsweredOptionByStudent) {
  
   }];
 
-  Plotly.newPlot('mostAnsweredOptionByStudent', tableData, layout_table, {displayModeBar: false});
+  Plotly.newPlot('most-answers-selected-by-student', tableData, layout_table, {displayModeBar: false});
   
-
 }
 
 function displayMostAnsweredOptionByPeriod(mostAnsweredOptionByPeriod) {
@@ -271,22 +281,20 @@ function displayMostAnsweredOptionByPeriod(mostAnsweredOptionByPeriod) {
       columnTotal.push(item.column_total);
   });
 
-
-
   const layout_table  = {
-    
-    font: { 
-      family: 'Courier New, Monospace',
-      size: 14,
-    },
-    margin: { t: 150, b: 0, l: 0, r: 0 }, // Set all margins to zero
+     font: { 
+       family: 'Arial, Serif',
+       size: 12,
+     },
+    title: 'Total number of most answered option (a or b) by period',
+    margin: { t: 40, b: 0, l: 10, r: 10 }, // Set all margins to zero
     width: 450,
+    height: 350,
   };
 
   // build the table
   const tableData = [{
     type: 'table',
-    text: '<b>Total number of unanswered questions by period</b>',
     header: {
       values: ['Class Period', 'A Totals', 'B Totals', 'Total'],
       align: "center",
@@ -305,6 +313,6 @@ function displayMostAnsweredOptionByPeriod(mostAnsweredOptionByPeriod) {
  
   }];
 
-  Plotly.newPlot('mostAnsweredOptionByPeriod', tableData, layout_table, {displayModeBar: false})
+  Plotly.newPlot('most-options-selected-by-period', tableData, layout_table, {displayModeBar: false})
 
 }

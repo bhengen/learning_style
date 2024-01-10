@@ -188,7 +188,7 @@ function displayQuestionFrequency(questionFrequency) {
   };
   
   const layout = {
-    title: 'Question Numbers Frequencies',
+    title: 'Frequency of Question Numbers',
     xaxis: {
       title: 'Frequency',
       range: [1,30],

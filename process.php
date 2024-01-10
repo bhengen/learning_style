@@ -1,32 +1,27 @@
 <!DOCTYPE html>
-<?PHP
-    session_start();
+<?php
 
     error_reporting(E_ALL);
     ini_set('display_errors', 1);
-
-    // Check if the timestamp is already stored in the session
-    if (!isset($_SESSION['timestamp'])) {
-        // If not, set the timestamp
-        $_SESSION['timestamp'] = date("YmdHis");
-    }
-
-    // Retrieve the timestamp from the session
-    $timestamp = $_SESSION['timestamp'];
-
-    // Display the timestamp for debugging purposes
-    //echo "Timestamp: " . $timestamp;
 
     include("php/db.php"); // make a connection to the database
 
     mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 
+    // display the post, uncomment for testing purpose
+    // print_r($_POST);
+    $timestamp = $_POST['timestamp'];
     $studentId = $_POST['studentId'];
     $firstName = $_POST['firstName'];
     $lastName = $_POST['lastName'];
     $classPeriod = $_POST['classPeriod'];
     $labels = explode(',',$_POST['selectedItems']);
-    $currentYear = $_POST['currentYear'];
+    $completed_day = $_POST['completedDay'];
+    $completed_month = $_POST['completedMonth'];
+    $schoolYear = $_POST['schoolYear'];
+    $completed_hour = $_POST['completedHour'];
+    $completed_min = $_POST['completedMin'];
+    $completed_sec = $_POST['completedSec'];
 
     $allQuery = "SELECT question_number, weight FROM weights";
     $allResult = mysqli_query($conn, $allQuery);
@@ -35,22 +30,75 @@
     $bins = [];
     $sum = 0;
 
-
-
     foreach ($labels as $key => $val) {
 
-        // insert the response into the table
-        $insertQuery = "INSERT INTO responses (response_id,student_id,label_selected,class_period) 
-            VALUES ('$timestamp','$studentId','$val','$classPeriod')";
-        $insertResult = mysqli_query($conn, $insertQuery);
-        if(!$insertResult) {
-            echo "Error adding record to table";
+        preg_match('/(\d+)/', $val, $matches);
+        $digit = $matches[0];
+        
+        // Check if the record exists for the current question_number
+        $checkQuery = "SELECT REGEXP_SUBSTR(question_number,'[0-9]+') as digit FROM questions_completed 
+            WHERE student_id='$studentId'
+            AND completed_year = '$schoolYear'
+            AND REGEXP_SUBSTR(question_number,'[0-9]+') = '$digit'";
+        
+        $checkResult = mysqli_query($conn, $checkQuery);
+        $existingRow = mysqli_fetch_array($checkResult);
+        $existingRow[0] ??= 0;  // set the variable to 0 if null
+   
+        if ($existingRow[0] == $digit) {
+            
+             // questions_number found update existing record
+             $query = "UPDATE questions_completed SET 
+                response_id = '$timestamp',
+                question_number = '$val',
+                completed_hour = '$completed_hour',
+                completed_min = '$completed_min',
+                completed_sec = '$completed_sec'
+                WHERE
+                    student_id = '$studentId' AND
+                    completed_year = '$schoolYear' AND
+                    REGEXP_SUBSTR(question_number,'[0-9]+') = '$digit'";
+            
+        } else {
+            
+            //  questions_number not found, insert into table
+            $query = "INSERT INTO questions_completed (
+                    response_id,
+                    student_id,
+                    question_number,
+                    class_period,
+                    completed_day,
+                    completed_month,
+                    completed_year,
+                    completed_hour,
+                    completed_min,
+                    completed_sec
+                ) 
+                VALUES (
+                '$timestamp',
+                '$studentId',
+                '$val',
+                '$classPeriod',
+                '$completed_day',
+                '$completed_month',
+                '$schoolYear',
+                '$completed_hour',
+                '$completed_min',
+                '$completed_sec'
+            )";
+            
+        }
+
+        $queryResult = mysqli_query($conn, $query);
+    
+        if (!$queryResult) {
+           echo "Error updating or inserting record<br/>";
         }
 
         // create the weight table from the select labels
         $query = "SELECT weight FROM `weights` WHERE question_number = '" . $val . "'";
         $result = mysqli_query($conn, $query);
-    
+
         if ($result) {
             $row = mysqli_fetch_assoc($result);
             if ($row) {
@@ -63,7 +111,10 @@
             echo "Error reading table: " . mysqli_error($conn);
         }
 
+        // update the questions_completed to 
+     
     }
+
 
     // close the connection
     mysqli_close($conn);
@@ -85,11 +136,13 @@
 <body>
     <h2>Learning Style Results Page</h2>
     <header>
-        Student Id: <?PHP echo $studentId ?>
+        Student Id: <?php echo $studentId ?>
         &nbsp;&nbsp;
-        Student Name: <?PHP echo $firstName." ".$lastName ?>
+        Student Name: <?php echo $firstName." ".$lastName ?>
         &nbsp;&nbsp;
-        Class Period: <?PHP echo $classPeriod ?>
+        Class Period: <?php echo $classPeriod ?>
+        &nbsp;&nbsp;
+        School Year: <?php echo $schoolYear ?>
     </header>
     <table id="resultsTable">
         <thead>

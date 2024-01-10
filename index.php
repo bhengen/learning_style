@@ -1,23 +1,27 @@
 <!DOCTYPE html>
 <?php
-session_start();
-unset($_SESSION['timestamp']);
+    session_start();
+    unset($_SESSION['timestamp']);
 
-include('php/db.php');
+    include('php/db.php');
 
-$query  = "SELECT * FROM students ORDER BY student_id";
-$result = mysqli_query($conn, $query);
+    $query  = "SELECT * FROM students ORDER BY student_id";
+    $result = mysqli_query($conn, $query);
 
-if (!$result) {
-    die("Error selecting records: " . mysqli_error($conn));
-}
+    if (!$result) {
+        die("Error selecting records: " . mysqli_error($conn));
+    }
 
-$studentRecords = array();
-while ($row = mysqli_fetch_assoc($result)) {
-    $studentRecords[] = $row;
-}
+    $studentRecords = array();
+    while ($row = mysqli_fetch_assoc($result)) {
+        $studentRecords[] = $row;
+    }
 
-$existingStudents = json_encode($studentRecords);
+    $existingStudents = json_encode($studentRecords);
+
+    $school_year = date("Y");
+    //$school_year = '2023';
+
 
 ?>
 
@@ -49,6 +53,8 @@ $existingStudents = json_encode($studentRecords);
             <option value="5">Period 5</option>
             <option value="6">Period 6</option>
         </select>
+
+        <input type="hidden" id="schoolYear" name="schoolYear" value="<?php echo $school_year; ?> ">
 
         <button type="submit" id="submitButton" target="">Sign In</button>
     </form>

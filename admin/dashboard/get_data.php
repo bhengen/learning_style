@@ -48,12 +48,11 @@
         );
     }
 
-
     // get the most answered selection from the questions_completed table
     $query = "SELECT question_number, COUNT(*) AS answer_count 
         FROM questions_completed 
         GROUP BY question_number 
-        ORDER BY answer_count DESC;";
+        ORDER BY answer_count DESC LIMIT 10;";
 
     $result = mysqli_query($conn, $query);
     $mostAnsweredQuestions = array();
@@ -104,8 +103,7 @@
             'column_total' => $row['column_total']
         );    
     }
-    
-    
+        
     // get the option (a or b) selected most by period   
     $query = "SELECT class_period,
                     COALESCE(SUM(RIGHT(qc.question_number,1) = 'A'),0) AS total_option_a,

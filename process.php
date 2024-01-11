@@ -110,11 +110,37 @@
         } else {
             echo "Error reading table: " . mysqli_error($conn);
         }
-
-        // update the questions_completed to 
      
     }
 
+    // update questions_tracked to match the questions_completed table
+    // Select all records from the completed table
+    $selectQuery = "SELECT * FROM questions_completed WHERE student_id='$studentId' AND completed_year='$schoolYear'";
+    $selectResult = mysqli_query($conn, $selectQuery);
+
+    if (!$selectResult) {
+        echo "Error: " . mysqli_error($conn);
+    } else {
+        while ($completedRow = mysqli_fetch_assoc($selectResult)) {
+            /*
+            $updateQuery = "UPDATE questions_tracked
+                            SET question_number = '{$completedRow['question_number']}',
+                                completed_day = '{$completedRow['completed_day']}',
+                                completed_month = '{$completedRow['completed_month']}',
+                                completed_hour = '{$completedRow['completed_hour']}',
+                                completed_min = '{$completedRow['completed_min']}',
+                                completed_sec = '{$completedRow['completed_sec']}'
+                            WHERE student_id='$studentId'
+                            AND completed_year='$schoolYear'";
+
+            $updateResult = mysqli_query($conn, $updateQuery);
+            */
+            print_r($completedRow)."<br/>";
+            //if (!$updateResult) {
+            //    echo "Error updating record: " . mysqli_error($conn);
+           // }
+        }
+    }
 
     // close the connection
     mysqli_close($conn);

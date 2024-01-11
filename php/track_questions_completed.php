@@ -6,7 +6,7 @@
     include('db.php');
 
     // Retrieve the selected values from the AJAX request
-    print_r($_POST);
+   //print_r($_POST);
 
     $student_id = $_POST['studentId'];
     $question_answered = $_POST['question_number'];

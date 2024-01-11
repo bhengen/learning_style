@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <?php 
 
+    session_start();
+
     if (empty($_POST)) {
         echo '<script>window.location.href="index.php"</script>';
         exit;
     }
-
-    session_start();
 
     error_reporting(E_ALL);
     ini_set('display_errors', 1);

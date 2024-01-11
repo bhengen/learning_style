@@ -8,8 +8,6 @@
 
     mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 
-    // display the post, uncomment for testing purpose
-    // print_r($_POST);
     $timestamp = $_POST['timestamp'];
     $studentId = $_POST['studentId'];
     $firstName = $_POST['firstName'];
@@ -30,69 +28,100 @@
     $bins = [];
     $sum = 0;
 
+
+    function updateOrInsertCompletedTable($conn, $studentId, $schoolYear, $digit, $val, $timestamp, $classPeriod, $completed_day, $completed_month, $completed_hour, $completed_min, $completed_sec) {
+        // Use a prepared statement to prevent SQL injection
+        $checkQuery = "SELECT 1 FROM questions_completed 
+            WHERE student_id=? AND completed_year=? AND REGEXP_SUBSTR(question_number,'[0-9]+')=?";
+        
+        $stmt = mysqli_prepare($conn, $checkQuery);
+        mysqli_stmt_bind_param($stmt, 'sss', $studentId, $schoolYear, $digit);
+        mysqli_stmt_execute($stmt);
+
+        $checkResult = mysqli_stmt_get_result($stmt);
+        $existingRows = mysqli_num_rows($checkResult);
+    
+        if ($existingRows > 0) {
+            $completedQuery = "UPDATE questions_completed SET 
+                response_id='$timestamp', question_number='$val', completed_hour='$completed_hour',
+                completed_min='$completed_min', completed_sec='$completed_sec'
+                WHERE student_id='$studentId' AND completed_year='$schoolYear' AND REGEXP_SUBSTR(question_number,'[0-9]+')='$digit'";
+            
+            $queryResult = mysqli_query($conn, $completedQuery);
+        } else {
+            $query = "INSERT INTO questions_completed (
+                    response_id, student_id, question_number, class_period, completed_day, completed_month, completed_year,
+                    completed_hour, completed_min, completed_sec
+                ) 
+                VALUES ('$timestamp', '$studentId', '$val', '$classPeriod', '$completed_day', '$completed_month', '$schoolYear',
+                    '$completed_hour', '$completed_min', '$completed_sec')";
+            
+            $queryResult = mysqli_query($conn, $query);
+        }
+    
+        return $queryResult;
+    }
+    
+    function updateOrInsertTrackedTable($conn, $studentId, $schoolYear, $digit, $val, $completed_day, $completed_month, $completed_hour, $completed_min, $completed_sec) {
+        // Use a prepared statement to prevent SQL injection
+        $checkQuery = "SELECT 1 FROM questions_tracked 
+            WHERE student_id=? AND completed_year=? AND REGEXP_SUBSTR(question_number,'[0-9]+')=?";
+        
+        $stmt = mysqli_prepare($conn, $checkQuery);
+        mysqli_stmt_bind_param($stmt, 'sss', $studentId, $schoolYear, $digit);
+        mysqli_stmt_execute($stmt);
+        $checkResult = mysqli_stmt_get_result($stmt);
+        $existingRows = mysqli_num_rows($checkResult);
+    
+        if ($existingRows > 0) {
+            $trackedQuery = "UPDATE questions_tracked SET 
+                question_number='$val',
+                completed_day = '$completed_day',
+                completed_month = '$completed_month',
+                completed_hour = '$completed_hour',
+                completed_min = '$completed_min',
+                completed_sec = '$completed_sec'
+                WHERE student_id='$studentId' AND completed_year='$schoolYear' AND REGEXP_SUBSTR(question_number,'[0-9]+')='$digit'";
+            
+            $trackedResult = mysqli_query($conn, $trackedQuery);
+        } else {
+            $query = "INSERT INTO questions_tracked (
+                    question_number, 
+                    student_id, 
+                    completed_year,
+                    completed_day,
+                    completed_month,
+                    completed_hour,
+                    ccompleted_min,
+                    completed_sec
+                ) 
+                VALUES (
+                    '$val',
+                    '$studentId',
+                    '$schoolYear',
+                    '$completed_day',
+                    '$completed_month',
+                    '$completed_hour',
+                    '$completed_min',
+                    '$completed_sec'
+                )";
+            
+            $trackedResult = mysqli_query($conn, $query);
+        }
+    
+        return $trackedResult;
+    }
+
     foreach ($labels as $key => $val) {
 
         preg_match('/(\d+)/', $val, $matches);
         $digit = $matches[0];
-        
-        // Check if the record exists for the current question_number
-        $checkQuery = "SELECT REGEXP_SUBSTR(question_number,'[0-9]+') as digit FROM questions_completed 
-            WHERE student_id='$studentId'
-            AND completed_year = '$schoolYear'
-            AND REGEXP_SUBSTR(question_number,'[0-9]+') = '$digit'";
-        
-        $checkResult = mysqli_query($conn, $checkQuery);
-        $existingRow = mysqli_fetch_array($checkResult);
-        $existingRow[0] ??= 0;  // set the variable to 0 if null
-   
-        if ($existingRow[0] == $digit) {
-            
-             // questions_number found update existing record
-             $query = "UPDATE questions_completed SET 
-                response_id = '$timestamp',
-                question_number = '$val',
-                completed_hour = '$completed_hour',
-                completed_min = '$completed_min',
-                completed_sec = '$completed_sec'
-                WHERE
-                    student_id = '$studentId' AND
-                    completed_year = '$schoolYear' AND
-                    REGEXP_SUBSTR(question_number,'[0-9]+') = '$digit'";
-            
-        } else {
-            
-            //  questions_number not found, insert into table
-            $query = "INSERT INTO questions_completed (
-                    response_id,
-                    student_id,
-                    question_number,
-                    class_period,
-                    completed_day,
-                    completed_month,
-                    completed_year,
-                    completed_hour,
-                    completed_min,
-                    completed_sec
-                ) 
-                VALUES (
-                '$timestamp',
-                '$studentId',
-                '$val',
-                '$classPeriod',
-                '$completed_day',
-                '$completed_month',
-                '$schoolYear',
-                '$completed_hour',
-                '$completed_min',
-                '$completed_sec'
-            )";
-            
-        }
 
-        $queryResult = mysqli_query($conn, $query);
+        $completedResult = updateOrInsertCompletedTable($conn, $studentId, $schoolYear, $digit, $val, $timestamp, $classPeriod, $completed_day, $completed_month, $completed_hour, $completed_min, $completed_sec);        
+        $trackedResult = updateOrInsertTrackedTable($conn, $studentId, $schoolYear, $digit, $val, $completed_day, $completed_month, $completed_hour, $completed_min, $completed_sec);
     
-        if (!$queryResult) {
-           echo "Error updating or inserting record<br/>";
+        if (!$completedResult || !$trackedResult) {
+            echo "Error updating or inserting records<br/>";
         }
 
         // create the weight table from the select labels
@@ -111,35 +140,6 @@
             echo "Error reading table: " . mysqli_error($conn);
         }
      
-    }
-
-    // update questions_tracked to match the questions_completed table
-    // Select all records from the completed table
-    $selectQuery = "SELECT * FROM questions_completed WHERE student_id='$studentId' AND completed_year='$schoolYear'";
-    $selectResult = mysqli_query($conn, $selectQuery);
-
-    if (!$selectResult) {
-        echo "Error: " . mysqli_error($conn);
-    } else {
-        while ($completedRow = mysqli_fetch_assoc($selectResult)) {
-            /*
-            $updateQuery = "UPDATE questions_tracked
-                            SET question_number = '{$completedRow['question_number']}',
-                                completed_day = '{$completedRow['completed_day']}',
-                                completed_month = '{$completedRow['completed_month']}',
-                                completed_hour = '{$completedRow['completed_hour']}',
-                                completed_min = '{$completedRow['completed_min']}',
-                                completed_sec = '{$completedRow['completed_sec']}'
-                            WHERE student_id='$studentId'
-                            AND completed_year='$schoolYear'";
-
-            $updateResult = mysqli_query($conn, $updateQuery);
-            */
-            print_r($completedRow)."<br/>";
-            //if (!$updateResult) {
-            //    echo "Error updating record: " . mysqli_error($conn);
-           // }
-        }
     }
 
     // close the connection

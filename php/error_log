@@ -1,0 +1,24 @@
+[28-Nov-2023 01:20:24 UTC] PHP Fatal error:  Uncaught Error: Class "mysqli" not found in /home/bhengena/public_html/learning_style/php/db.php:8
+Stack trace:
+#0 /home/bhengena/public_html/learning_style/php/track_questions_completed.php(7): include()
+#1 {main}
+  thrown in /home/bhengena/public_html/learning_style/php/db.php on line 8
+[28-Nov-2023 01:26:38 UTC] PHP Fatal error:  Uncaught Error: Class "mysqli" not found in /home/bhengena/public_html/learning_style/php/db.php:8
+Stack trace:
+#0 /home/bhengena/public_html/learning_style/php/track_questions_completed.php(7): include()
+#1 {main}
+  thrown in /home/bhengena/public_html/learning_style/php/db.php on line 8
+[28-Nov-2023 01:26:55 UTC] PHP Fatal error:  Uncaught Error: Class "mysqli" not found in /home/bhengena/public_html/learning_style/php/db.php:8
+Stack trace:
+#0 /home/bhengena/public_html/learning_style/php/track_questions_completed.php(7): include()
+#1 {main}
+  thrown in /home/bhengena/public_html/learning_style/php/db.php on line 8
+[28-Nov-2023 01:28:00 UTC] PHP Fatal error:  Uncaught Error: Class "mysqli" not found in /home/bhengena/public_html/learning_style/php/db.php:8
+Stack trace:
+#0 /home/bhengena/public_html/learning_style/php/track_questions_completed.php(7): include()
+#1 {main}
+  thrown in /home/bhengena/public_html/learning_style/php/db.php on line 8
+[28-Nov-2023 01:29:45 UTC] PHP Fatal error:  Uncaught Error: Class "mysqli" not found in /home/bhengena/public_html/learning_style/php/track_questions_completed.php:13
+Stack trace:
+#0 {main}
+  thrown in /home/bhengena/public_html/learning_style/php/track_questions_completed.php on line 13

@@ -1,0 +1,89 @@
+body {
+    margin: 0;
+}
+
+#container {
+    display: grid;
+    grid-template-rows: auto 1fr auto; /* Header, Main Section, Footer */
+    grid-template-columns: 13% 87%; /* Sidebar, Main Body */
+    grid-template-areas: 
+        "header header"
+        "sidebar main"
+        "footer footer";
+    height: 100vh;
+}
+
+header {
+    grid-area: header;
+    background-color: #f2f2f2;
+    padding: 10px;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid lightgray;
+}
+
+#sidebar {
+    grid-area: sidebar;
+    background-color: #333;
+    color: #fff;
+    padding: 1px;
+}
+
+#main_section {
+    grid-area: main;
+    padding: 15px;
+    background-color: #fff;
+    text-align: center;
+}
+
+#footer {
+    grid-area: footer;
+    background-color: #f2f2f2;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid lightgray;
+    margin-top: auto;
+}
+
+#update_teacher_form {
+    display: grid;
+    width: 75%;
+    justify-content: center;
+}
+
+#update_teacher_form label {
+    display: block;
+    text-align: center;
+    margin-top: 10px;
+    font-size: 20px;
+}
+
+#update_teacher_form input {
+    width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+    margin-bottom: 10px;
+    font-size: 15px;
+}
+
+#update_teacher_form button {
+    display: block;
+    margin: 10px auto;
+}
+
+#teacher_submit {
+    width: 300px;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+a:hover {
+    color: white;
+}
+
+

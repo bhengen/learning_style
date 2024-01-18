@@ -1,55 +1,55 @@
 body {
     margin: 0;
+    padding: 0;
 }
 
 #container {
     display: grid;
+    justify-content: center;
+    align-self: center;
     grid-template-rows: auto 1fr auto; /* Header, Main Section, Footer */
-    grid-template-columns: 13% 97%; /* Sidebar, Main Body */
-    height: 100%;
-    width: 100%;
+    grid-template-columns: 1% 13% 87%; /* Sidebar, Main Body */
+    grid-template-areas: 
+        "header header header"
+        "sidebar sidebar main"
+        "footer footer footer";
+    height: 100vh;
+    width: auto;
+    margin: 0;
+    padding: 0;
 }
 
-header {
-    font-size: 30px;
-    color:black;
+#sidebar {
+    grid-area: sidebar;
+    background-color: #333;
+    color: #fff;
+    padding: 1px;
 }
 
-#header, #footer {
-    grid-column: span 2; /* Span both columns */
+#main_section {
+    grid-area: main;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+    background-color: #fff;
+    text-align: center;
+}
+
+#footer {
+    grid-area: footer;
     background-color: #f2f2f2;
     padding: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
     border: 1px solid lightgray;
-}
-
-#footer {
     margin-top: auto;
-}
-
-#sidebar {
-    background-color: #333;
-    color: #fff;
-    padding: 1px;
 }
 
 #loginForm {
     width: 35%;
     margin: 0 auto;
-
 }
-
-#main_section {
-    align-items: center;
-    justify-content: center;
-    padding: 15px;
-    background-color: #fff;
-    text-align: center;
-    width: 90%;
-    height: 95%;
- }
 
 .label {
     display: block;
@@ -83,13 +83,15 @@ button:hover {
     background-color: #45a049;
 }
 
-/* Container styles */
-.header_container {
-    display: grid;
-    grid-template-columns: 90% 10%;
-    align-items: center;
+header {
+    grid-area: header;
+    width: auto;
+    background-color: #f2f2f2;
     padding: 10px;
-    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid lightgray;
 }
 
 /* Title styles */
@@ -97,12 +99,14 @@ button:hover {
     text-align: center;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 40px;   
+    flex-grow: 1;
 }
 
 /* Apply styles to the link to make it look like a button */
 .button-like-link {
-    justify-content: right;
+
     padding: 10px 20px;
+    margin-right: 10px;
     text-align: center;
     text-decoration: none;
     background-color: #4CAF50; /* Green background color */
@@ -164,7 +168,7 @@ ul {
     box-shadow: 2px 2px 0 rgba(255, 255, 255, 255) inset; /* Inset box shadow */
 }
 
-#teacher_list_table {
+#record_list_table {
     width: 90%;
     border-collapse: collapse;
     justify-content: center;
@@ -173,7 +177,7 @@ ul {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
 }
 
-.teacher_list_header {
+.record_list_header {
     background-color: darkslategray; /* Set background color to green */
     color: white;
     padding: 10px;
@@ -181,13 +185,103 @@ ul {
     font-weight: bold;
 }
 
-.teacher_list_data {
+.record_list_data {
     padding: 10px;
     text-align: center;
     border-bottom: 1px solid #ddd; /* Add a border to separate rows */
 }
 
 /* Alternate row background color for a green bar paper effect */
-#teacher_list_table tr:nth-child(even) {
+#record_list_table tr:nth-child(even) {
     background-color: #f2f2f2; /* Set a light green color */
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+a:hover {
+    color: white;
+}
+
+#sidebar-link {
+    text-decoration: none;
+    color: lightgray;
+}
+
+#update_teacher_form {
+    display: grid;
+    width: 75%;
+    justify-content: center;
+}
+
+#update_teacher_form label {
+    display: block;
+    text-align: center;
+    margin-top: 10px;
+    font-size: 20px;
+}
+
+#update_teacher_form input {
+    width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+    margin-bottom: 10px;
+    font-size: 15px;
+}
+
+#update_teacher_form button {
+    display: block;
+    margin: 10px auto;
+}
+
+#teacher_submit {
+    width: 300px;
+}
+
+.edit-button {
+    width: 125px;
+    align-self: center;
+    padding: 10px;
+    margin-top: 10px;
+}
+
+.edit-input {
+    font-family:Arial, Helvetica, sans-serif;
+    text-align: center;
+    font-size: 15px;
+    display: inline-block;
+    margin-top: 15px;
+    height: 35px; 
+    border: 1px lightgray solid;
+    width: 150px;
+}
+
+.edit_list_data {
+    white-space: nowrap;
+}
+
+#option-select {
+    height: 35px;
+    width: 150px;
+    margin-top: 0px;
+    text-align: center;
+    background-color: white;
+    border: lightgray 1px solid;
+}
+
+#sort-link {
+    color: lightgray;
+}
+
+#sort-link:hover {
+    color: white;
+    font-size: 15px;
+}
+
+.add_list_data {
+    text-align: center;
+    white-space: nowrap;
+    height: 50px;
 }

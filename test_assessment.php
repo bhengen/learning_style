@@ -36,13 +36,6 @@
 
     foreach ($randomLabels as $key => $val) {
 
-        // insert the response into the table
-        //$insertQuery = "INSERT INTO responses (response_id,student_id,label_selected,class_period) 
-        //    VALUES ('$timestamp','$studentId','$val','$classPeriod')";
-        //$insertResult = mysqli_query($conn, $insertQuery);
-        //if(!$insertResult) {
-        //    echo "Error adding record to table";
-       // }
 
         // create the weight table from the select labels
         $query = "SELECT weight FROM `Weights` WHERE label = '" . $val . "'";

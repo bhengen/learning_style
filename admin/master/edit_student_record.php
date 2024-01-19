@@ -68,7 +68,7 @@
                     <tr>
                         <td colspan='3'><input class='edit-button' type='submit' name='command' value='update'></td>
                         <td colspan='3'><input class='edit-button' type='submit' name='command' value='delete'></td>
-                        <td colspan='3'><input class='edit-button' type='button' name='command  ' value='reset' onclick='resetForm()'></td>
+                        <td colspan='3'><input class='edit-button' type='button' name='command' value='reset' onclick='resetForm()'></td>
                     </tr>
                     
                 </form>

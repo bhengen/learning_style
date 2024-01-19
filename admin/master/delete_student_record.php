@@ -7,62 +7,46 @@
 
     $student_record = $_POST;
 
-    // set initial record exist flag to false
-    $record_exists = false;
+    $query = "SELECT * FROM students where student_id='$student_record[student_id]'";
+    $result = mysqli_query($conn, $query);
+    $new_record = mysqli_fetch_assoc($result);
 
     try {
         // Start the transaction
         mysqli_begin_transaction($conn);
-
-        // Your SQL statements go here
-        $query = "INSERT INTO students (student_id, first_name, last_name, class_period, school_name, city, state, postal_code) 
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+      
+        // sql statement to delete the record
+        $query = "DELETE FROM students  WHERE student_id = ?";
 
         // Prepare the statement
         $stmt = mysqli_prepare($conn, $query);
 
         // Bind parameters
-        mysqli_stmt_bind_param($stmt, "isssssss", 
-            $student_record['student_id'],
-            $student_record['first_name'], 
-            $student_record['last_name'], 
-            $student_record['class_period'], 
-            $student_record['school_name'], 
-            $student_record['city'], 
-            $student_record['state'], 
-            $student_record['postal_code']);
+        mysqli_stmt_bind_param($stmt, "i", $student_record['student_id']);
 
         // Execute the statement
         mysqli_stmt_execute($stmt);
-
-        // Check if the insert was successful
+        
+        // Check if the update was successful
         if (mysqli_affected_rows($conn) > 0) {
             // Commit the changes
             mysqli_commit($conn);
-            echo "Insert successful. Changes committed.";
+            echo "Delete successful. Changes committed.";
         } else {
             // Rollback if no rows were affected
             mysqli_rollback($conn);
-            echo "Insert failed. Changes rolled back.";
+            echo "Delete failed. Changes rolled back.";
         }
-
-        // Close the prepared statement
-        mysqli_stmt_close($stmt);
     } catch (Exception $e) {
         // Handle exceptions or errors
         echo "Error: " . $e->getMessage();
-        // Rollback on error
+       // Rollback on error
         mysqli_rollback($conn);
-        // set the existing record flag
-        $record_exists = true;
-        echo $record_exists;
     } finally {
         // Close the database connection
         mysqli_close($conn);
-    }
-
+     }
 ?>
-
 <html>
     <head>
         <meta charset="UTF-8">
@@ -80,12 +64,12 @@
                 </header>
             <?php include('sidebar.html'); ?>
             <div id='main_section'>
-                 <h2>Removed Record</h2>
+                 <h2>Removed the following Record</h2>
                 <table id='record_list_table'>
                     <th class='record_list_header'>Student Id</th>
                     <th class='record_list_header'>First Name</th>
                     <th class='record_list_header'>Last Name</th>
-                    <th class='record_list_header'>Class Period</th>
+                    <th class='record_list_header'>Role</th>
                     <th class='record_list_header'>School Name</th>
                     <th class='record_list_header'>City</th>
                     <th class='record_list_header'>State</th>

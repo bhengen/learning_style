@@ -8,7 +8,22 @@
     $sort = isset($_GET['sort']) ? $_GET['sort'] : 'teacher_id'; // Default sorting by student_id
     $order = isset($_GET['order']) ? $_GET['order'] : 'asc'; // Default order ascending
     
-    $query = "SELECT * FROM teachers ORDER BY $sort $order";
+    // Filtering
+    $filter = "";
+    $category = isset($_POST["category"]) ? $_POST['category'] : '';
+    $search_term = isset($_POST['search']) ? $_POST['search'] : '';
+
+    $reset_flag = isset($_POST['reset_flag']);
+
+    if ( $reset_flag) {
+        $filter = " Where 1";
+    } else {
+        if (!empty($search_term)) {
+            $filter = " WHERE $category LIKE '%$search_term%'";
+        }      
+    } 
+
+    $query = "SELECT * FROM teachers $filter ORDER BY $sort $order";
     $result = mysqli_query($conn, $query);
 ?>
 <html lang="en"> 
@@ -26,7 +41,37 @@
             <a href=../logoff.php class='button-like-link'>Logout</a>
         </header>
         <?php include('sidebar.html'); ?>
+
         <div id='main_section'>
+                    
+            <!-- Search Form -->
+            <form action="" method="POST" id="search_form">
+                <!-- First Row -->
+                <label for="search" id="label_search_term">Filter Term:</label>
+                <label for="category" id="label_search_category">Filter By:</label>
+
+                <!-- Second Row -->
+                <input type="text" name="search" id="text_search_category">
+
+                <select name='category' id="option_search_term">
+                    <option value="teacher_id">Teacher Id</option>
+                    <option value="first_name">First Name</option>
+                    <option value="last_name">Last Name</option>
+                    <option value="role">Role</option>
+                    <option value="school_name">School Name</option>    
+                    <option value="city">City</option>
+                    <option value="state">State</option>
+                    <option value="postal_code">Postal Code</option>
+                </select>
+                <!-- Hidden input for reset flag -->
+                <input type="hidden" name="reset" id="reset_flag" value="0">
+                
+                <input type="submit" value="Reset Filter" id="button_reset_filter">
+                <input type="submit" value="Filter" id="button_filter">
+
+            </form>
+
+
             <table id='record_list_table'>
                 <th class='record_list_header'>
                     <a id='sort-link' href='?sort=teacher_id&order=desc'> << </a>
@@ -88,7 +133,19 @@
         </table>
         </div>
     </div>
-    <!--<script src="../scripts/admin.js"></script>-->
+    <script>
+        document.getElementById('button_reset_filter').addEventListener('click', function() {
+            // Set the reset flag to indicate that reset button was clicked
+            document.getElementById('reset_flag').value = "1";
+            
+            // Reset the search input value
+            document.getElementById('text_search_category').value = '';
+
+            // Reset the selected option in the dropdown
+            let dropdown = document.getElementById('option_search_term');
+            dropdown.selectedIndex = 0;
+        });
+    </script>
 </body>
 </html>
 

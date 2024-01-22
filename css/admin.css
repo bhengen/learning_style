@@ -148,7 +148,8 @@ ul {
 .item:nth-child(3),
 .item:nth-child(5),
 .item:nth-child(6),
-.item:nth-child(8) {
+.item:nth-child(8),
+.item:nth-child(10) {
     padding-top: 5px;
 }
 

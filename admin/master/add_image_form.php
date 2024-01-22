@@ -18,19 +18,24 @@
             <table id='record_list_table'>
                 <th class='record_list_header'>Image Name</th>
                 <th class='record_list_header'>Image URL</th>
-                <th class='record_list_header'>Label</th>
+                <th class='record_list_header'>Question Number</th>
                 <form id='editForm' action='add_image_record.php' method='post'>
                     <tr id='record_row'>
-                        <td class='edit_list_data'><input class='edit-input' type='text' name='image_name' required></td>
-                        <td class='edit_list_data'><input class='edit-input' type='text' name='image_url' required></td>
-                        <td class='edit_list_data'><input class='edit-input' type='text' name='label' required></td>
-                        <td class='edit_list_data'><input class='edit-input' type='text' name='city' required></td>
-                        <td class='edit_list_data'><input class='edit-input' type='text' name='state' required></td>
-                        <td class='edit_list_data'><input class='edit-input' type='text' name='postal_code' required></td>
+                        <td class='edit_list_data'>
+                            <input class='edit-input' type='text' name='image_name' required oninput='updateQuestion()' id='image_name'>
+                        </td>
+                        <td class='edit_list_data'>images/<input class='edit-input' type='text' name='image_url' required></td>
+                        <td class='edit_list_data'>
+                            <input class='edit-input' type='text' name='question_number' required id='question_number'>
+                            <select name='question_option' id='option-select'>
+                                <option>a</option>
+                                <option>b</option>
+                            </select>   
+                        </td>
                     </tr>
                     <tr>
-                        <td colspan='4'><input class='edit-button' type='submit' value='add' name='add'></td>
-                        <td colspan='4'><input class='edit-button' type='button'  value='reset' onclick='resetForm()'></td>
+                        <td><input class='edit-button' type='submit' value='add' name='add'></td>
+                        <td colspan='2'><input class='edit-button' type='button'  value='reset' onclick='resetForm()'></td>
                     </tr>
                     
                 </form>
@@ -41,6 +46,15 @@
             function resetForm() {
                 document.getElementById('editForm').reset();
             } 
-        </script>
+    
+            function updateQuestion() {
+                // Get the value from the first input
+                let image_name = document.getElementById('image_name').value;
+
+                // Update the value of the second input
+                document.getElementById('question_number').value = image_name;
+            }
+    </script>
+
     </body>
 </html>

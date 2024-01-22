@@ -36,10 +36,11 @@
                 <th class='record_list_header'>Image Url</th>
                 <th class='record_list_header'>Question Number</th>
 
-                <form id='editForm' action='process_images_record.php' method='post'>
+                <form id='editForm' action='process_image_record.php' method='post'>
                     <tr id='record_row'>
                 <?php
                     echo "
+                        <input type='hidden' name='image_id' value='$row[image_id]'>
                         <td class='record_list_data'><input class='edit-input' type='text' name='image_name' value='$row[image_name]'></td>
                         <td class='record_list_data'>
                             <input class='edit-input' type='text' name='image_url' value='images/".$image_name."'>

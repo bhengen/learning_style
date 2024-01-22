@@ -81,14 +81,14 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Add Student Formm</title>
+        <title>Add Student Record</title>
         <link rel="stylesheet" href="../../css/admin.css">
     </head>
 
     <body>
         <div id="container">
             <header id="header" class="header_container">
-                <h2 id='title'>Add Student Form </h2> 
+                <h2 id='title'>Add Student Record</h2> 
                 <a href='../logoff.php' class='button-like-link'>Logout</a>
             </header>
             <?php include('sidebar.html'); ?>

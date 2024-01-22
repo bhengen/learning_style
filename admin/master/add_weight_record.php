@@ -4,9 +4,7 @@
     ini_set('display_errors', 1);
     include('../../php/db.php');
 
-    $teacher_record = $_POST;
-    print_r($teacher_record);
-    
+    $weight_record = $_POST;
     
     // set initial record exist flag to false
     $record_exists = false;
@@ -16,23 +14,17 @@
         mysqli_begin_transaction($conn);
 
         // Your SQL statements go here
-        $query = "INSERT INTO teachers (teacher_id, first_name, last_name, role, school_name, city, state, postal_code) 
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        $query = "INSERT INTO weights (question_number, weight) 
+                VALUES (?, ?)";
 
         // Prepare the statement
         $stmt = mysqli_prepare($conn, $query);
 
         // Bind parameters
-        mysqli_stmt_bind_param($stmt, "isssssss", 
-                $teacher_record['teacher_id'], 
-                $teacher_record['first_name'], 
-                $teacher_record['last_name'], 
-                $teacher_record['role'], 
-                $teacher_record['school_name'], 
-                $teacher_record['city'], 
-                $teacher_record['state'], 
-                $teacher_record['postal_code']
-            );
+        mysqli_stmt_bind_param($stmt, "ss", 
+                $weight_record['question_number'], 
+                $weight_record['weight']
+        );
 
         // Execute the statement
         mysqli_stmt_execute($stmt);
@@ -67,14 +59,14 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Add Teacher Record</title>
+        <title>Add Weight Record</title>
         <link rel="stylesheet" href="../../css/admin.css">
     </head>
 
     <body>
         <div id="container">
             <header id="header" class="header_container">
-                <h2 id='title'>Add Teacher Record</h2> 
+                <h2 id='title'>Add Weight Record </h2> 
                 <a href='../logoff.php' class='button-like-link'>Logout</a>
             </header>
             <?php include('sidebar.html'); ?>
@@ -86,23 +78,11 @@
                     echo "<h4>The following teacher has been added to the database:</h4>"; 
                     echo "
                         <table id='record_list_table'>
-                            <th class='record_list_header'>Teacher Id</th>
-                            <th class='record_list_header'>First Name</th>
-                            <th class='record_list_header'>Last Name</th>
-                            <th class='record_list_header'>Role</th>
-                            <th class='record_list_header'>School Name</th>
-                            <th class='record_list_header'>City</th>
-                            <th class='record_list_header'>State</th>
-                            <th class='record_list_header'>Postal Code</th>
+                            <th class='record_list_header'>Question Number</th>
+                            <th class='record_list_header'>Weight</th>
                             <tr id='record_row'>
-                                <td class='add_list_data'>$teacher_record[teacher_id]</td>
-                                <td class='add_list_data'>$teacher_record[first_name]</td>
-                                <td class='add_list_data'>$teacher_record[last_name]</td>
-                                <td class='add_list_data'>$teacher_record[role]</td>
-                                <td class='add_list_data'>$teacher_record[school_name]</td>
-                                <td class='add_list_data'>$teacher_record[city]</td>
-                                <td class='add_list_data'>$teacher_record[state]</td>
-                                <td class='add_list_data'>$teacher_record[postal_code]</td>
+                                <td class='add_list_data'>$weight_record[question_number]</td>
+                                <td class='add_list_data'>$weight_record[weight]</td>
                             </tr>
                         </table>
                     ";

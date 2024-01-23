@@ -69,9 +69,9 @@
 
             <table id='record_list_table'>
                 <th class='record_list_header'>
-                    <a id='sort-link' href='?sort=question_number&order=desc'> << </a>
+                    <a id='sort-link' href='?sort=weight_id&order=desc'> << </a>
                         Question Number
-                    <a id='sort-link' href='?sort=question_number&order=asc'> >> </a>
+                    <a id='sort-link' href='?sort=weight_id&order=asc'> >> </a>
                 </th>
                 <th class='record_list_header'>
                     <a id='sort-link' href='?sort=weight&order=desc'> << </a>

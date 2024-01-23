@@ -1,10 +1,11 @@
-<?php
+ <!-- #region --><?php
 
     error_reporting(E_ALL);
     ini_set('display_errors', 1);
     include('../../php/db.php');
 
     $weight_record = $_POST;
+    $question_number = $weight_record['question_number'].$weight_record['option_selected'];
     
     // set initial record exist flag to false
     $record_exists = false;
@@ -22,7 +23,7 @@
 
         // Bind parameters
         mysqli_stmt_bind_param($stmt, "ss", 
-                $weight_record['question_number'], 
+                $question_number, 
                 $weight_record['weight']
         );
 
@@ -81,7 +82,7 @@
                             <th class='record_list_header'>Question Number</th>
                             <th class='record_list_header'>Weight</th>
                             <tr id='record_row'>
-                                <td class='add_list_data'>$weight_record[question_number]</td>
+                                <td class='add_list_data'>$question_number</td>
                                 <td class='add_list_data'>$weight_record[weight]</td>
                             </tr>
                         </table>

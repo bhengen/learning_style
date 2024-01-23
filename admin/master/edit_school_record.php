@@ -5,9 +5,9 @@
     ini_set('display_errors', 1);
     include('../../php/db.php');
 
-    $question_number = $_GET['question_number'];
+    $school_id = $_GET['school_id'];
 
-    $query = "SELECT * FROM weights where question_number='$question_number'";
+    $query = "SELECT * FROM schools where school_id='$school_id'";
     $result = mysqli_query($conn, $query);
     $row = mysqli_fetch_assoc($result);
 
@@ -17,35 +17,38 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Edit Weight Table</title>
+        <title>Edit School Record</title>
         <link rel="stylesheet" href="../../css/admin.css">
     </head>
 <body>
     
     <div id="container">
         <header id="header">
-            <h2 id='title'>Edit Weight Table</h2> 
+            <h2 id='title'>Edit School Record</h2> 
             <a href=../logoff.php class='button-like-link'>Logout</a>
         </header>
         <?php include('sidebar.html'); ?>
         <div id='main_section'>
             <table id='record_list_table'>
-                <th class='record_list_header'>Question Number</th>
-                <th class='record_list_header' colspan='2'>Weight</th>
-                <form id='editForm' action='process_weights_table.php' method='post'>
+                <th class='record_list_header'>Name</th>
+                <th class='record_list_header'>City</th>
+                <th class='record_list_header'>State</th>
+                <th class='record_list_header'>Postal Code</th>
+                <form id='editForm' action='process_school_record.php' method='post'>
                     <tr id='record_row'>
-                        <input type="hidden" name='weight_id' value='$row[weight_id]'>
                 <?php
                     echo "
-                        <td class='record_list_data'><input class='edit-input' type='text' name='question_number' value='$row[question_number]'></td>
-                        <td class='record_list_data' colspan='2'><input class='edit-input' type='text' name='weight' value='$row[weight]'></td>
+                        <td class='record_list_data'><input class='edit-input' type='text' name='name' value='$row[name]'></td>
+                        <td class='record_list_data'><input class='edit-input' type='text' name='city' value='$row[city]'></td>
+                        <td class='record_list_data'><input class='edit-input' type='text' name='state' value='$row[state]'></td>
+                        <td class='record_list_data'><input class='edit-input' type='text' name='postal_code' value='$row[postal_code]'></td>
                     ";
                 ?>
                 </tr>
                     <tr>
                         <td><input class='edit-button' type='submit' name='command' value='update'></td>
                         <td><input class='edit-button' type='submit' name='command' value='delete'></td>
-                        <td><input class='edit-button' type='button' name='command' value='reset' onclick='resetForm()'></td>
+                        <td colspan='2'><input class='edit-button' type='button' name='command' value='reset' onclick='resetForm()'></td>
                     </tr>
                     
                 </form>

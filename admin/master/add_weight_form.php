@@ -21,7 +21,13 @@
 
                 <form id='editForm' action='add_weight_record.php' method='post'>
                     <tr id='record_row'>
-                        <td class='edit_list_data'><input class='edit-input' type='text' name='question_number' required></td>
+                        <td class='edit_list_data'>
+                            <input class='edit-input' type='text' name='question_number' required>
+                            <select id='option-select' name='option_selected'>
+                                <option>A</option>
+                                <option>B</option>
+                            </select required>
+                        </td>
                         <td class='edit_list_data'><input class='edit-input' type='text' name='weight' required></td>
                     </tr>
                     <tr>

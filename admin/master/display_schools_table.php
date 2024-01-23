@@ -70,9 +70,9 @@
 
             <table id='record_list_table'>
                 <th class='record_list_header'>
-                    <a id='sort-link' href='?sort=school_name&order=desc'> << </a>
+                    <a id='sort-link' href='?sort=name&order=desc'> << </a>
                         School Name
-                    <a id='sort-link' href='?sort=school_name&order=asc'> >> </a>
+                    <a id='sort-link' href='?sort=name&order=asc'> >> </a>
                 </th>
                 <th class='record_list_header'>
                     <a id='sort-link' href='?sort=city&order=desc'> << </a>
@@ -94,7 +94,7 @@
                         echo "<tr id='record_row'>";
                         echo "
                             <td class='record_list_data'>
-                                <a href='edit_schools_table.php?schoool_id=$row[school_id]' id='tdata'>$row[school_name]</a>
+                                <a href='edit_school_record.php?school_id=$row[school_id]' id='tdata'>$row[name]</a>
                             </td>
                             <td class='record_list_data'>$row[city]</td>
                             <td class='record_list_data'>$row[state]</td>                        

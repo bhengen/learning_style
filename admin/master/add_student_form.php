@@ -31,7 +31,7 @@
                         <td class='edit_list_data'><input class='edit-input' type='text' name='last_name' required></td>
                         <td class='edit_list_data'><input class='edit-input' type='text' name='school_name' required></td>
                         <td class='edit_list_data'>
-                            <select id='option-select'name='class_period' required>
+                            <select id='option-select' name='class_period' required>
                                 <?php for($i = 1; $i < 7; $i++ ) {
                                     echo "<option value = $i>$i</option>";
                                 } ?>

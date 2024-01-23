@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <?php
 
     error_reporting(E_ALL);
@@ -22,7 +23,6 @@
         if ($count > 0) {
             // Name already exists, handle accordingly (display an error, prevent insertion, etc.)
             echo "Error: This name already exists in the database.";
-            exit;
         }
 
         // Start the transaction

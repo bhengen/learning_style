@@ -6,13 +6,10 @@
     include('../../php/db.php');
 
     $teacher_record = $_POST;
-    list($teacher_id, $first_name, $last_name, $role, $school_name, $city, $state, $postal_code, $command) = array_values($_POST);
 
-    $query = "SELECT * FROM teachers where teacher_id='$teacher_id'";
+    $query = "SELECT * FROM teachers where teacher_id='$teacher_record[teacher_id]'";
     $result = mysqli_query($conn, $query);
-    $new_record = mysqli_fetch_assoc($result);
-
-    list($old_teacher_id, $old_first_name, $old_last_name, $old_role, $old_school, $old_city, $old_state, $old_postal_code) = array_values($new_record);
+    $existing_record = mysqli_fetch_assoc($result);
 
     try {
         // Start the transaction
@@ -38,9 +35,10 @@
                 $teacher_record['last_name'], 
                 $teacher_record['role'], 
                 $teacher_record['school_name'], 
-                $teacher_record['city, $state'], 
+                $teacher_record['city'],
+                $teacher_record['state'], 
                 $teacher_record['postal_code'], 
-                $teacher_record['$teacher_id']);
+                $teacher_record['teacher_id']);
 
         // Execute the statement
         mysqli_stmt_execute($stmt);
@@ -96,14 +94,14 @@
                         <tr id='record_row'>
                         <?php
                             echo "
-                                <td class='edit_list_data'>$old_teacher_id</td>
-                                <td class='edit_list_data'>$old_first_name</td>
-                                <td class='edit_list_data'>$old_last_name</td>
-                                <td class='edit_list_data'>$old_role</td>
-                                <td class='edit_list_data'>$old_school</td>
-                                <td class='edit_list_data'>$old_city</td>
-                                <td class='edit_list_data'>$old_state</td>
-                                <td class='edit_list_data'>$old_postal_code</td>
+                                <td class='edit_list_data'>$existing_record[teacher_id]</td>
+                                <td class='edit_list_data'>$existing_record[first_name]</td>
+                                <td class='edit_list_data'>$existing_record[last_name]</td>
+                                <td class='edit_list_data'>$existing_record[role]</td>
+                                <td class='edit_list_data'>$existing_record[school_name]</td>
+                                <td class='edit_list_data'>$existing_record[city]</td>
+                                <td class='edit_list_data'>$existing_record[state]</td>
+                                <td class='edit_list_data'>$existing_record[postal_code]</td>
                             ";
                         ?>
                         </tr>
@@ -122,14 +120,14 @@
                         <tr id='record_row'>
                         <?php
                             echo "
-                                <td class='edit_list_data'>$teacher_id</td>
-                                <td class='edit_list_data'>$first_name</td>
-                                <td class='edit_list_data'>$last_name</td>
-                                <td class='edit_list_data'>$role</td>
-                                <td class='edit_list_data'>$school_name</td>
-                                <td class='edit_list_data'>$city</td>
-                                <td class='edit_list_data'>$state</td>
-                                <td class='edit_list_data'>$postal_code</td>
+                                <td class='edit_list_data'>$teacher_record[teacher_id]</td>
+                                <td class='edit_list_data'>$teacher_record[first_name]</td>
+                                <td class='edit_list_data'>$teacher_record[last_name]</td>
+                                <td class='edit_list_data'>$teacher_record[role]</td>
+                                <td class='edit_list_data'>$teacher_record[school_name]</td>
+                                <td class='edit_list_data'>$teacher_record[city]</td>
+                                <td class='edit_list_data'>$teacher_record[state]</td>
+                                <td class='edit_list_data'>$teacher_record[postal_code]</td>
                             ";
                         ?>
                         </tr>

@@ -10,6 +10,7 @@
     $query = "SELECT * FROM schools where school_id='$school_id'";
     $result = mysqli_query($conn, $query);
     $row = mysqli_fetch_assoc($result);
+    print_r($row);
 
 
 ?>
@@ -36,6 +37,7 @@
                 <th class='record_list_header'>Postal Code</th>
                 <form id='editForm' action='process_school_record.php' method='post'>
                     <tr id='record_row'>
+ 
                 <?php
                     echo "
                         <td class='record_list_data'><input class='edit-input' type='text' name='name' value='$row[name]'></td>
@@ -46,6 +48,7 @@
                 ?>
                 </tr>
                     <tr>
+                        <td><input type="hidden" name='school_id' value='<?php echo $row['school_id']; ?>'></td>
                         <td><input class='edit-button' type='submit' name='command' value='update'></td>
                         <td><input class='edit-button' type='submit' name='command' value='delete'></td>
                         <td colspan='2'><input class='edit-button' type='button' name='command' value='reset' onclick='resetForm()'></td>

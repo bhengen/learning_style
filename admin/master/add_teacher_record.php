@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <?php
 
     error_reporting(E_ALL);
@@ -5,9 +6,7 @@
     include('../../php/db.php');
 
     $teacher_record = $_POST;
-    print_r($teacher_record);
-    
-    
+   
     // set initial record exist flag to false
     $record_exists = false;
 

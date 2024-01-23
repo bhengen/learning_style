@@ -141,7 +141,8 @@ ul {
 .item:nth-child(4),
 .item:nth-child(5),
 .item:nth-child(7),
-.item:nth-child(9) {
+.item:nth-child(9),
+.item:nth-child(11) {
     border-bottom: 1px solid #ccc;
 }
 
@@ -149,7 +150,8 @@ ul {
 .item:nth-child(5),
 .item:nth-child(6),
 .item:nth-child(8),
-.item:nth-child(10) {
+.item:nth-child(10),
+.item:nth-child(12) {
     padding-top: 5px;
 }
 

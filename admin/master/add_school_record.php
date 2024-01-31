@@ -85,12 +85,12 @@
 
     <body>
         <div id="container">
-            <header id="header" class="header_container">
+            <header id="header" class="header-container">
                 <h2 id='title'>Add School Record</h2> 
                 <a href='../logoff.php' class='button-like-link'>Logout</a>
             </header>
             <?php include('sidebar.html'); ?>
-            <div id='main_section'>
+            <div id='main-section'>
             <?php 
                 if ($record_exists) {
                     echo "<h4>The following school already exists in the database:</h4>";
@@ -98,16 +98,16 @@
                     echo "<h4>The following school has been added to the database:</h4>"; 
                 }
             ?>
-            <table id='record_list_table'>
-                <th class='record_list_header'>Name</th>
-                <th class='record_list_header'>City</th>
-                <th class='record_list_header'>State</th>
-                <th class='record_list_header'>Postal Code</td>
+            <table id='record-list-table'>
+                <th class='record-list-header'>Name</th>
+                <th class='record-list-header'>City</th>
+                <th class='record-list-header'>State</th>
+                <th class='record-list-header'>Postal Code</td>
                 <tr id='record_row'>
-                    <td class='add_list_data'><?php echo $school_record['name']; ?></td>
-                    <td class='add_list_data'><?php echo $school_record['city']; ?></td>
-                    <td class='add_list_data'><?php echo $school_record['state']; ?></td>
-                    <td class='add_list_data'><?php echo $school_record['postal_code']; ?></td>
+                    <td class='add-list-data'><?php echo $school_record['name']; ?></td>
+                    <td class='add-list-data'><?php echo $school_record['city']; ?></td>
+                    <td class='add-list-data'><?php echo $school_record['state']; ?></td>
+                    <td class='add-list-data'><?php echo $school_record['postal_code']; ?></td>
                 </tr>
             </table>
         </div>

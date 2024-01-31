@@ -92,7 +92,7 @@
                 <a href='../logoff.php' class='button-like-link'>Logout</a>
             </header>
             <?php include('sidebar.html'); ?>
-            <div id='main_section'>
+            <div id='main-section'>
             <?php 
                 if ($record_exists) {
                     echo "<h4>The following student already exists in the database:</h4>";
@@ -100,24 +100,24 @@
                     echo "<h4>The following student has been added to the database:</h4>"; 
                 }
             ?>
-            <table id='record_list_table'>
-                <th class='record_list_header'>Student Id</th>
-                <th class='record_list_header'>First Name</th>
-                <th class='record_list_header'>Last Name</th>
-                <th class='record_list_header'>Class Period</th>
-                <th class='record_list_header'>School Name</th>
-                <th class='record_list_header'>City</th>
-                <th class='record_list_header'>State</th>
-                <th class='record_list_header'>Postal Code</td>
+            <table id='record-list-table'>
+                <th class='record-list-header'>Student Id</th>
+                <th class='record-list-header'>First Name</th>
+                <th class='record-list-header'>Last Name</th>
+                <th class='record-list-header'>Class Period</th>
+                <th class='record-list-header'>School Name</th>
+                <th class='record-list-header'>City</th>
+                <th class='record-list-header'>State</th>
+                <th class='record-list-header'>Postal Code</td>
                 <tr id='record_row'>
-                    <td class='add_list_data'><?php echo $student_record['student_id']; ?></td>
-                    <td class='add_list_data'><?php echo $student_record['first_name']; ?></td>
-                    <td class='add_list_data'><?php echo $student_record['last_name']; ?></td>
-                    <td class='add_list_data'><?php echo $student_record['class_period']; ?></td>
-                    <td class='add_list_data'><?php echo $student_record['school_name']; ?></td>
-                    <td class='add_list_data'><?php echo $student_record['city']; ?></td>
-                    <td class='add_list_data'><?php echo $student_record['state']; ?></td>
-                    <td class='add_list_data'><?php echo $student_record['postal_code']; ?></td>
+                    <td class='add-list-data'><?php echo $student_record['student_id']; ?></td>
+                    <td class='add-list-data'><?php echo $student_record['first_name']; ?></td>
+                    <td class='add-list-data'><?php echo $student_record['last_name']; ?></td>
+                    <td class='add-list-data'><?php echo $student_record['class_period']; ?></td>
+                    <td class='add-list-data'><?php echo $student_record['school_name']; ?></td>
+                    <td class='add-list-data'><?php echo $student_record['city']; ?></td>
+                    <td class='add-list-data'><?php echo $student_record['state']; ?></td>
+                    <td class='add-list-data'><?php echo $student_record['postal_code']; ?></td>
                 </tr>
             </table>
         </div>

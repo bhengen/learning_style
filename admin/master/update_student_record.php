@@ -74,59 +74,59 @@
 
     <body>
         <div id="container">
-                <header id="header" class="header_container">
+                <header id="header" class="header-container">
                     <h2 id='title'>Update Student Record </h2> 
                     <a href='../logoff.php' class='button-like-link'>Logout</a>
                 </header>
                 <?php include('sidebar.html'); ?>
-                <div id='main_section'>
+                <div id='main-section'>
                 <h2>Original Record</h2>                
-                <table id='record_list_table'>
-                    <th class='record_list_header'>Student Id</th>
-                    <th class='record_list_header'>First Name</th>
-                    <th class='record_list_header'>Last Name</th>
-                    <th class='record_list_header'>Class Period</th>
-                    <th class='record_list_header'>School Name</th>
-                    <th class='record_list_header'>City</th>
-                    <th class='record_list_header'>State</th>
-                    <th class='record_list_header'>Postal Code</th>
+                <table id='record-list-table'>
+                    <th class='record-list-header'>Student Id</th>
+                    <th class='record-list-header'>First Name</th>
+                    <th class='record-list-header'>Last Name</th>
+                    <th class='record-list-header'>Class Period</th>
+                    <th class='record-list-header'>School Name</th>
+                    <th class='record-list-header'>City</th>
+                    <th class='record-list-header'>State</th>
+                    <th class='record-list-header'>Postal Code</th>
                     <tr id='record_row'>
                     <?php
                         echo "
-                            <td class='edit_list_data'>$existing_record[student_id]</td>
-                            <td class='edit_list_data'>$existing_record[first_name]</td>
-                            <td class='edit_list_data'>$existing_record[last_name]</td>
-                            <td class='edit_list_data'>$existing_record[class_period]</td>
-                            <td class='edit_list_data'>$existing_record[school_name]</td>
-                            <td class='edit_list_data'>$existing_record[city]</td>
-                            <td class='edit_list_data'>$existing_record[state]</td>
-                            <td class='edit_list_data'>$existing_record[postal_code]</td>
+                            <td class='edit-list-data'>$existing_record[student_id]</td>
+                            <td class='edit-list-data'>$existing_record[first_name]</td>
+                            <td class='edit-list-data'>$existing_record[last_name]</td>
+                            <td class='edit-list-data'>$existing_record[class_period]</td>
+                            <td class='edit-list-data'>$existing_record[school_name]</td>
+                            <td class='edit-list-data'>$existing_record[city]</td>
+                            <td class='edit-list-data'>$existing_record[state]</td>
+                            <td class='edit-list-data'>$existing_record[postal_code]</td>
                         ";
                     ?>
                     </tr>
                 </table>
                 <br/>
                 <h2>Updated Record</h2>
-                <table id='record_list_table'>
-                    <th class='record_list_header'>Teacher Id</th>
-                    <th class='record_list_header'>First Name</th>
-                    <th class='record_list_header'>Last Name</th>
-                    <th class='record_list_header'>Class Period</th>
-                    <th class='record_list_header'>School Name</th>
-                    <th class='record_list_header'>City</th>
-                    <th class='record_list_header'>State</th>
-                    <th class='record_list_header'>Postal Code</th>
+                <table id='record-list-table'>
+                    <th class='record-list-header'>Teacher Id</th>
+                    <th class='record-list-header'>First Name</th>
+                    <th class='record-list-header'>Last Name</th>
+                    <th class='record-list-header'>Class Period</th>
+                    <th class='record-list-header'>School Name</th>
+                    <th class='record-list-header'>City</th>
+                    <th class='record-list-header'>State</th>
+                    <th class='record-list-header'>Postal Code</th>
                     <tr id='record_row'>
                     <?php
                         echo "
-                            <td class='edit_list_data'>$student_record[student_id]</td>
-                            <td class='edit_list_data'>$student_record[first_name]</td>
-                            <td class='edit_list_data'>$student_record[last_name]</td>
-                            <td class='edit_list_data'>$student_record[class_period]</td>
-                            <td class='edit_list_data'>$student_record[school_name]</td>
-                            <td class='edit_list_data'>$student_record[city]</td>
-                            <td class='edit_list_data'>$student_record[state]</td>
-                            <td class='edit_list_data'>$student_record[postal_code]</td>
+                            <td class='edit-list-data'>$student_record[student_id]</td>
+                            <td class='edit-list-data'>$student_record[first_name]</td>
+                            <td class='edit-list-data'>$student_record[last_name]</td>
+                            <td class='edit-list-data'>$student_record[class_period]</td>
+                            <td class='edit-list-data'>$student_record[school_name]</td>
+                            <td class='edit-list-data'>$student_record[city]</td>
+                            <td class='edit-list-data'>$student_record[state]</td>
+                            <td class='edit-list-data'>$student_record[postal_code]</td>
                         ";
                     ?>
                     </tr>

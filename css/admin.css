@@ -6,7 +6,6 @@ body {
 #container {
     display: grid;
     justify-content: center;
-    align-self: center;
     grid-template-rows: auto 1fr auto; /* Header, Main Section, Footer */
     grid-template-columns: 1% 13% 87%; /* Sidebar, Main Body */
     grid-template-areas: 
@@ -17,22 +16,23 @@ body {
     width: auto;
     margin: 0;
     padding: 0;
+ 
 }
 
 #sidebar {
-    grid-area: sidebar;
+    grid-area: sidebar; 
     background-color: #333;
     color: #fff;
     padding: 1px;
 }
 
-#main_section {
+#main-section {
     grid-area: main;
-    align-items: center;
-    justify-content: center;
-    padding: 15px;
     background-color: #fff;
     text-align: center;
+    margin: 10px 0 0 75px;
+    padding: 0;
+    width: auto;
 }
 
 #footer {
@@ -104,7 +104,6 @@ header {
 
 /* Apply styles to the link to make it look like a button */
 .button-like-link {
-
     padding: 10px 20px;
     margin-right: 10px;
     text-align: center;
@@ -177,16 +176,15 @@ ul {
     padding: 20px; /* Adjust padding as needed */
 }
 
-#record_list_table {
+#record-list-table {
     width: 90%;
     border-collapse: collapse;
-    justify-content: center;
     margin-left: 20px;
     background-color: #fff; /* Set background color to white */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
 }
 
-.record_list_header {
+.record-list-header {
     background-color: darkslategray; /* Set background color to green */
     color: white;
     padding: 10px;
@@ -194,14 +192,14 @@ ul {
     font-weight: bold;
 }
 
-.record_list_data {
+.record-list-data {
     padding: 10px;
     text-align: center;
     border-bottom: 1px solid #ddd; /* Add a border to separate rows */
 }
 
 /* Alternate row background color for a green bar paper effect */
-#record_list_table tr:nth-child(even) {
+#record-list-table tr:nth-child(even) {
     background-color: #f2f2f2; /* Set a light green color */
 }
 
@@ -219,20 +217,20 @@ a:hover {
     color: lightgray;
 }
 
-#update_teacher_form {
+#update-teacher-form {
     display: grid;
     width: 75%;
     justify-content: center;
 }
 
-#update_teacher_form label {
+#update-teacher-form label {
     display: block;
     text-align: center;
     margin-top: 10px;
     font-size: 20px;
 }
 
-#update_teacher_form input {
+#update-teacher-form input {
     width: 100%;
     box-sizing: border-box;
     text-align: center;
@@ -240,20 +238,19 @@ a:hover {
     font-size: 15px;
 }
 
-#update_teacher_form button {
+#update-teacher-form button {
     display: block;
     margin: 10px auto;
 }
 
-#teacher_submit {
+#teacher-submit {
     width: 300px;
 }
 
 .edit-button {
     width: 125px;
-    align-self: center;
-    padding: 10px;
     margin-top: 10px;
+    align-self: center;
 }
 
 .edit-input {
@@ -267,17 +264,19 @@ a:hover {
     width: 150px;
 }
 
-.edit_list_data {
+.edit-list-data {
     white-space: nowrap;
 }
 
-#option-select {
+#option-select, .option-select {
     height: 35px;
     width: 150px;
     margin-top: 0px;
     text-align: center;
     background-color: white;
     border: lightgray 1px solid;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
 }
 
 #sort-link {
@@ -289,13 +288,13 @@ a:hover {
     font-size: 15px;
 }
 
-.add_list_data {
+.add-list-data {
     text-align: center;
     white-space: nowrap;
     height: 50px;
 }
 
-#search_form {
+#search-form {
     display: grid; 
     grid-template-columns: auto auto auto;
     grid-template-rows: auto auto;
@@ -310,21 +309,21 @@ a:hover {
     "option-search-term text-search-category button-filter";
 }
 
-#label_search_category{
+#label-search-category{
     font-family: Arial, Helvetica, sans-serif;
     grid-area: label-search-category;
     vertical-align: middle;
     margin: 0px;
 }
 
-#label_search_term {
+#label-search-term {
     font-family: Arial, Helvetica, sans-serif;
     grid-area: label-search-term;
     vertical-align: middle;
     margin: 0px;
 }
 
-#button_reset_filter {
+#button-reset-filter {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 15px;
     width: 300px;
@@ -335,7 +334,7 @@ a:hover {
     margin: 0px;
 }
 
-#option_search_term {
+#option-search-term {
     height: 40px;
     width: 300px;
     margin-top: 0px;
@@ -349,13 +348,13 @@ a:hover {
     grid-area: option-search-term;
     margin-top: 0px;}
 
-#text_search_category {
+#text-search-category {
     font-family: Arial, Helvetica, sans-serif;
     grid-area: text-search-category;
     margin-top: 0px;
 }
 
-#button_filter {
+#button-filter {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 15px;
     width: 300px;
@@ -363,4 +362,79 @@ a:hover {
     grid-area: button-filter;
     padding: 5px;
     margin-top: 0px;
+}
+
+#sql-container {
+    display: grid;
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: 
+        "label label"
+        "box box"
+        "execute reset";
+    grid-gap: 0px;
+    align-items: center;
+    justify-self: center;
+    justify-items: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    margin: 0;
+    padding: 0;
+    border:solid 1px red;
+    width: 75%;
+}
+
+#sql-input  {
+    grid-area: box;
+    width: 85%;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    margin-bottom: 10px;
+}
+
+.sql-label {
+    grid-area: label;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    justify-content: center;
+}
+
+.execute-sql-button {
+    grid-area: execute;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    width: 150px;
+    border-radius: 5px;
+    justify-items: center;
+}
+
+.clear-sql-button {
+    grid-area: reset;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    width: 150px;
+    border-radius: 5px;
+    justify-content: center;
+}
+
+#table-columns {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 15px;
+}
+
+.td-select {
+    justify-content: space-between;
+    padding-right: 25px;
+    width: 50%;
+}
+
+.table-names {
+    font-size: 15px;
+    font-family: Arial, Helvetica, sans-serif;
+    white-space: nowrap;
+    justify-content: center;
 }

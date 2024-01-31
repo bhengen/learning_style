@@ -82,26 +82,26 @@
                 <?php include('sidebar.html'); ?>
                 <div id='main_section'>
                     <h2>Original Record</h2>                
-                    <table id='record_list_table'>
-                        <th class='record_list_header'>Teacher Id</th>
-                        <th class='record_list_header'>First Name</th>
-                        <th class='record_list_header'>Last Name</th>
-                        <th class='record_list_header'>Role</th>
-                        <th class='record_list_header'>School Name</th>
-                        <th class='record_list_header'>City</th>
-                        <th class='record_list_header'>State</th>
-                        <th class='record_list_header'>Postal Code</th>
-                        <tr id='record_row'>
+                    <table id='record-list-table'>
+                        <th class='record-list-header'>Teacher Id</th>
+                        <th class='record-list-header'>First Name</th>
+                        <th class='record-list-header'>Last Name</th>
+                        <th class='record-list-header'>Role</th>
+                        <th class='record-list-header'>School Name</th>
+                        <th class='record-list-header'>City</th>
+                        <th class='record-list-header'>State</th>
+                        <th class='record-list-header'>Postal Code</th>
+                        <tr id='record-row'>
                         <?php
                             echo "
-                                <td class='edit_list_data'>$existing_record[teacher_id]</td>
-                                <td class='edit_list_data'>$existing_record[first_name]</td>
-                                <td class='edit_list_data'>$existing_record[last_name]</td>
-                                <td class='edit_list_data'>$existing_record[role]</td>
-                                <td class='edit_list_data'>$existing_record[school_name]</td>
-                                <td class='edit_list_data'>$existing_record[city]</td>
-                                <td class='edit_list_data'>$existing_record[state]</td>
-                                <td class='edit_list_data'>$existing_record[postal_code]</td>
+                                <td class='edit-list-data'>$existing_record[teacher_id]</td>
+                                <td class='edit-list-data'>$existing_record[first_name]</td>
+                                <td class='edit-list-data'>$existing_record[last_name]</td>
+                                <td class='edit-list-data'>$existing_record[role]</td>
+                                <td class='edit-list-data'>$existing_record[school_name]</td>
+                                <td class='edit-list-data'>$existing_record[city]</td>
+                                <td class='edit-list-data'>$existing_record[state]</td>
+                                <td class='edit-list-data'>$existing_record[postal_code]</td>
                             ";
                         ?>
                         </tr>
@@ -109,25 +109,25 @@
                     <br/>
                     <h2>Updated Record</h2>
                     <table id='record_list_table'>
-                        <th class='record_list_header'>Teacher Id</th>
-                        <th class='record_list_header'>First Name</th>
-                        <th class='record_list_header'>Last Name</th>
-                        <th class='record_list_header'>Role</th>
-                        <th class='record_list_header'>School Name</th>
-                        <th class='record_list_header'>City</th>
-                        <th class='record_list_header'>State</th>
-                        <th class='record_list_header'>Postal Code</th>
+                        <th class='record-list-header'>Teacher Id</th>
+                        <th class='record-list-header'>First Name</th>
+                        <th class='record-list-header'>Last Name</th>
+                        <th class='record-list-header'>Role</th>
+                        <th class='record-list-header'>School Name</th>
+                        <th class='record-list-header'>City</th>
+                        <th class='record-list-header'>State</th>
+                        <th class='record-list-header'>Postal Code</th>
                         <tr id='record_row'>
                         <?php
                             echo "
-                                <td class='edit_list_data'>$teacher_record[teacher_id]</td>
-                                <td class='edit_list_data'>$teacher_record[first_name]</td>
-                                <td class='edit_list_data'>$teacher_record[last_name]</td>
-                                <td class='edit_list_data'>$teacher_record[role]</td>
-                                <td class='edit_list_data'>$teacher_record[school_name]</td>
-                                <td class='edit_list_data'>$teacher_record[city]</td>
-                                <td class='edit_list_data'>$teacher_record[state]</td>
-                                <td class='edit_list_data'>$teacher_record[postal_code]</td>
+                                <td class='edit-list-data'>$teacher_record[teacher_id]</td>
+                                <td class='edit-list-data'>$teacher_record[first_name]</td>
+                                <td class='edit-list-data'>$teacher_record[last_name]</td>
+                                <td class='edit-list-data'>$teacher_record[role]</td>
+                                <td class='edit-list-data'>$teacher_record[school_name]</td>
+                                <td class='edit-list-data'>$teacher_record[city]</td>
+                                <td class='edit-list-data'>$teacher_record[state]</td>
+                                <td class='edit-list-data'>$teacher_record[postal_code]</td>
                             ";
                         ?>
                         </tr>

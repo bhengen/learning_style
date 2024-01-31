@@ -42,18 +42,17 @@
         </header>
         <?php include('sidebar.html'); ?>
 
-        <div id='main_section'>
+        <div id='main-section'>
                     
             <!-- Search Form -->
-            <form action="" method="POST" id="search_form">
+            <form action="" method="POST" id="search-form">
                 <!-- First Row -->
-                <label for="search" id="label_search_term">Filter Term:</label>
-                <label for="category" id="label_search_category">Filter By:</label>
-
+                <label for="search" id="label-search-term">Filter Term:</label>
+                <label for="category" id="label-search-category">Filter By:</label>
                 <!-- Second Row -->
-                <input type="text" name="search" id="text_search_category">
+                <input type="text" name="search" id="text-search-category">
 
-                <select name='category' id="option_search_term">
+                <select name='category' id="option-search-term">
                     <option value="school_name">School Name</option>
                     <option value="city">City</option>
                     <option value="state">State</option>
@@ -61,30 +60,30 @@
 
                 </select>
                 <!-- Hidden input for reset flag -->
-                <input type="hidden" name="reset" id="reset_flag" value="0">
+                <input type="hidden" name="reset" id="reset-flag" value="0">
                 
-                <input type="submit" value="Reset Filter" id="button_reset_filter">
-                <input type="submit" value="Filter" id="button_filter">
+                <input type="submit" value="Reset Filter" id="button-reset-filter">
+                <input type="submit" value="Filter" id="button-filter">
 
             </form>
 
-            <table id='record_list_table'>
-                <th class='record_list_header'>
+            <table id='record-list-table'>
+                <th class='record-list-header'>
                     <a id='sort-link' href='?sort=name&order=desc'> << </a>
                         School Name
                     <a id='sort-link' href='?sort=name&order=asc'> >> </a>
                 </th>
-                <th class='record_list_header'>
+                <th class='record-list-header'>
                     <a id='sort-link' href='?sort=city&order=desc'> << </a>
                         City
                     <a id='sort-link' href='?sort=city&order=asc'> >> </a>
                 </th>
-                <th class='record_list_header'>
+                <th class='record-list-header'>
                     <a id='sort-link' href='?sort=state&order=desc'> << </a>
                         State
                     <a id='sort-link' href='?sort=state&order=asc'> >> </a>
                 </th>
-                <th class='record_list_header'>
+                <th class='record-list-header'>
                     <a id='sort-link' href='?sort=postal_code&order=desc'> << </a>
                         Postal Code
                     <a id='sort-link' href='?sort=postal_code&order=asc'> >> </a>
@@ -107,18 +106,18 @@
         </div>
     </div>
     <script>
-        document.getElementById('button_reset_filter').addEventListener('click', function() {
+        document.getElementById('button-reset-filter').addEventListener('click', function() {
             // Prevent the default form submission behavior
             event.preventDefault();
             
             // Set the reset flag to indicate that reset button was clicked
-            document.getElementById('reset_flag').value = "1";
+            document.getElementById('reset-flag').value = "1";
              
             // Reset the search input value
-            document.getElementById('text_search_category').value = '';
+            document.getElementById('text-search-category').value = '';
 
             // Reset the selected option in the dropdown
-            let dropdown = document.getElementById('option_search_term');
+            let dropdown = document.getElementById('option-search-term');
             dropdown.selectedIndex = 0;
             
             // Remove sorting parameters from the current URL

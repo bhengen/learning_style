@@ -60,37 +60,37 @@
 
     <body>
         <div id="container">
-                <header id="header" class="header_container">
+                <header id="header" class="header-container">
                     <h2 id='title'>Update Weights Table</h2> 
                     <a href='../logoff.php' class='button-like-link'>Logout</a>
                 </header>
                 <?php include('sidebar.html'); ?>
-                <div id='main_section'>
+                <div id='main-section'>
                 <h2>Original Record</h2>                
-                <table id='record_list_table'>
-                    <th class='record_list_header'>Question Number</th>
-                    <th class='record_list_header'>Weight</th>
+                <table id='record-list-table'>
+                    <th class='record-list-header'>Question Number</th>
+                    <th class='record-list-header'>Weight</th>
 
                     <tr id='record_row'>
                     <?php
                         echo "
-                            <td class='edit_list_data'>$existing_record[question_number]</td>
-                            <td class='edit_list_data'>$existing_record[weight]</td>
+                            <td class='edit-list-data'>$existing_record[question_number]</td>
+                            <td class='edit-list-data'>$existing_record[weight]</td>
                         ";
                     ?>
                     </tr>
                 </table>
                 <br/>
                 <h2>Updated Record</h2>
-                <table id='record_list_table'>
-                    <th class='record_list_header'>Question Number</th>
-                    <th class='record_list_header'>Weight</th>
+                <table id='record-list-table'>
+                    <th class='record-list-header'>Question Number</th>
+                    <th class='record-list-header'>Weight</th>
 
                     <tr id='record_row'>
                     <?php
                         echo "
-                            <td class='edit_list_data'>$student_record[question_number]</td>
-                            <td class='edit_list_data'>$student_record[weight]</td>
+                            <td class='edit-list-data'>$student_record[question_number]</td>
+                            <td class='edit-list-data'>$student_record[weight]</td>
                          ";
                     ?>
                     </tr>

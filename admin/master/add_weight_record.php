@@ -66,24 +66,24 @@
 
     <body>
         <div id="container">
-            <header id="header" class="header_container">
+            <header id="header" class="header-container">
                 <h2 id='title'>Add Weight Record </h2> 
                 <a href='../logoff.php' class='button-like-link'>Logout</a>
             </header>
             <?php include('sidebar.html'); ?>
-            <div id='main_section'>
+            <div id='main-section'>
             <?php 
                 if ($record_exists) {
                     echo "<h4>There was an error adding the record to the database: $error_message</h4>";
                 } else {
                     echo "<h4>The following teacher has been added to the database:</h4>"; 
                     echo "
-                        <table id='record_list_table'>
-                            <th class='record_list_header'>Question Number</th>
-                            <th class='record_list_header'>Weight</th>
+                        <table id='record-list-table'>
+                            <th class='record-list-header'>Question Number</th>
+                            <th class='record-list-header'>Weight</th>
                             <tr id='record_row'>
-                                <td class='add_list_data'>$question_number</td>
-                                <td class='add_list_data'>$weight_record[weight]</td>
+                                <td class='add-list-data'>$question_number</td>
+                                <td class='add-list-data'>$weight_record[weight]</td>
                             </tr>
                         </table>
                     ";

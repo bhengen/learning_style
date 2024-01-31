@@ -66,24 +66,24 @@
 
     <body>
         <div id="container">
-                <header id="header" class="header_container">
+                <header id="header" class="header-container">
                     <h2 id='title'>Update Image Record </h2> 
                     <a href='../logoff.php' class='button-like-link'>Logout</a>
                 </header>
                 <?php include('sidebar.html'); ?>
-                <div id='main_section'>
+                <div id='main-section'>
                 <h2>Original Record</h2>                
                 <table id='record_list_table'>
-                    <th class='record_list_header'>Image Name</th>
-                    <th class='record_list_header'>Image Url</th>
-                    <th class='record_list_header'>Question Number</th>
+                    <th class='record-list-header'>Image Name</th>
+                    <th class='record-list-header'>Image Url</th>
+                    <th class='record-list-header'>Question Number</th>
 
-                    <tr id='record_row'>
+                    <tr id='record-row'>
                     <?php
                         echo "
-                            <td class='edit_list_data'>$existing_record[image_name]</td>
-                            <td class='edit_list_data'>$existing_record[image_url]</td>
-                            <td class='edit_list_data'>$existing_record[question_number]</td>
+                            <td class='edit-list-data'>$existing_record[image_name]</td>
+                            <td class='edit-list-data'>$existing_record[image_url]</td>
+                            <td class='edit-list-data'>$existing_record[question_number]</td>
                          ";
                     ?>
                     </tr>
@@ -91,16 +91,16 @@
                 <br/>
                 <h2>Updated Record</h2>
                 <table id='record_list_table'>
-                    <th class='record_list_header'>Image Name</th>
-                    <th class='record_list_header'>Image Url</th>
-                    <th class='record_list_header'>Question Number</th>
+                    <th class='record-list-header'>Image Name</th>
+                    <th class='record-list-header'>Image Url</th>
+                    <th class='record-list-header'>Question Number</th>
 
                     <tr id='record_row'>
                     <?php
                         echo "
-                            <td class='edit_list_data'>$image_record[image_name]</td>
-                            <td class='edit_list_data'>$image_record[image_url]</td>
-                            <td class='edit_list_data'>$image_record[question_number]</td>
+                            <td class='edit-list-data'>$image_record[image_name]</td>
+                            <td class='edit-list-data'>$image_record[image_url]</td>
+                            <td class='edit-list-data'>$image_record[question_number]</td>
                         ";
                     ?>
                     </tr>

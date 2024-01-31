@@ -36,24 +36,24 @@
 <body>
     
     <div id="container">
-        <header id="header" class="header_container">
+        <header id="header" class="header-container">
             <h2 id='title'>Teacher Record List </h2> <br/>
             <a href=../logoff.php class='button-like-link'>Logout</a>
         </header>
         <?php include('sidebar.html'); ?>
 
-        <div id='main_section'>
+        <div id='main-section'>
                     
             <!-- Search Form -->
-            <form action="" method="POST" id="search_form">
+            <form action="" method="POST" id="search-form">
                 <!-- First Row -->
-                <label for="search" id="label_search_term">Filter Term:</label>
-                <label for="category" id="label_search_category">Filter By:</label>
+                <label for="search" id="label-search-term">Filter Term:</label>
+                <label for="category" id="label-search-category">Filter By:</label>
 
                 <!-- Second Row -->
-                <input type="text" name="search" id="text_search_category">
+                <input type="text" name="search" id="text-search-category">
 
-                <select name='category' id="option_search_term">
+                <select name='category' id="option-search-term">
                     <option value="teacher_id">Teacher Id</option>
                     <option value="first_name">First Name</option>
                     <option value="last_name">Last Name</option>
@@ -72,43 +72,43 @@
             </form>
 
 
-            <table id='record_list_table'>
-                <th class='record_list_header'>
+            <table id='record-list-table'>
+                <th class='record-list-header'>
                     <a id='sort-link' href='?sort=teacher_id&order=desc'> << </a>
                         Teacher Id
                     <a id='sort-link' href='?sort=teacher_id&order=asc'> >> </a>
                 </th>
-                <th class='record_list_header'>
+                <th class='record-list-header'>
                     <a id='sort-link' href='?sort=first_name&order=desc'> << </a>
                         First Name
                     <a id='sort-link' href='?sort=first_name&order=asc'> >> </a>
                 </th>
-                <th class='record_list_header'>
+                <th class='record-list-header'>
                     <a id='sort-link' href='?sort=last_name&order=desc'> << </a>
                         Last Name
                     <a id='sort-link' href='?sort=last_name&order=asc'> >> </a>
                 </th>
-                <th class='record_list_header'>
+                <th class='record-list-header'>
                     <a id='sort-link' href='?sort=role&order=desc'> << </a>
                         Role
                     <a id='sort-link' href='?sort=role&order=asc'> >> </a>
                 </th>
-                <th class='record_list_header'>
+                <th class='record-list-header'>
                     <a id='sort-link' href='?sort=school_name&order=desc'> << </a>
                         School Name
                     <a id='sort-link' hrtef='?sort=school_name&order=asc'> >> </a>
                 </th>
-                <th class='record_list_header'>
+                <th class='record-list-header'>
                     <a id='sort-link' href='?sort=city&order=desc'> << </a>
                         City
                     <a id='sort-link' href='?sort=city&order=asc'> >> </a>
                 </th>
-                <th class='record_list_header'>
+                <th class='record-list-header'>
                     <a id='sort-link' href='?sort=state&order=desc'> << </a>
                         State
                     <a id='sort-link' href='?sort=state&order=asc'> >> </a>
                 </th>
-                <th class='record_list_header'>
+                <th class='record-list-header'>
                     <a id='sort-link' href='?sort=postal_code&order=desc'> << </a>
                         Postal Code
                     <a id='sort-link' href='?sort=postal_code&order=asc'> >> </a>
@@ -117,7 +117,7 @@
                     while($row = mysqli_fetch_assoc($result)) {
                         echo "<tr id='record_row'>";
                         echo "
-                            <td class='record_list_data'>
+                            <td class='record-list-data'>
                                 <a href='edit_teacher_record.php?tid=$row[teacher_id]' id='tdata'>$row[teacher_id]</a></td>
                             <td class='record_list_data'>$row[first_name]</td>
                             <td class='record_list_data'>$row[last_name]</td>

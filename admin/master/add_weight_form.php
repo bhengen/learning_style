@@ -14,21 +14,21 @@
                 <a href='../logoff.php' class='button-like-link'>Logout</a>
             </header>
             <?php include('sidebar.html'); ?>
-            <div id='main_section'>
-            <table id='record_list_table'>
-                <th class='record_list_header'>Question Number</th>
-                <th class='record_list_header'>Weight</th>
+            <div id='main-section'>
+            <table id='record-list-table'>
+                <th class='record-list-header'>Question Number</th>
+                <th class='record-list-header'>Weight</th>
 
                 <form id='editForm' action='add_weight_record.php' method='post'>
-                    <tr id='record_row'>
-                        <td class='edit_list_data'>
+                    <tr id='record-row'>
+                        <td class='edit-list-data'>
                             <input class='edit-input' type='text' name='question_number' required>
                             <select id='option-select' name='option_selected'>
                                 <option>A</option>
                                 <option>B</option>
                             </select required>
                         </td>
-                        <td class='edit_list_data'><input class='edit-input' type='text' name='weight' required></td>
+                        <td class='edit-list-data'><input class='edit-input' type='text' name='weight' required></td>
                     </tr>
                     <tr>
                         <td><input class='edit-button' type='submit' value='add' name='add'></td>

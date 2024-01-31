@@ -36,60 +36,60 @@
 <body>
     
     <div id="container">
-        <header id="header" class="header_container">
+        <header id="header" class="header-container">
             <h2 id='title'>Images Table</h2> <br/>
             <a href=../logoff.php class='button-like-link'>Logout</a>
         </header>
         <?php include('sidebar.html'); ?>
 
-        <div id='main_section'>
+        <div id='main-section'>
                     
             <!-- Search Form -->
-            <form action="" method="POST" id="search_form">
+            <form action="" method="POST" id="search-form">
                 <!-- First Row -->
-                <label for="search" id="label_search_term">Filter Term:</label>
-                <label for="category" id="label_search_category">Filter By:</label>
+                <label for="search" id="label-search-term">Filter Term:</label>
+                <label for="category" id="label-search-category">Filter By:</label>
 
                 <!-- Second Row -->
-                <input type="text" name="search" id="text_search_category">
+                <input type="text" name="search" id="text-search-category">
 
-                <select name='category' id="option_search_term">
+                <select name='category' id="option-search-term">
                     <option value="image_name">Image Name</option>
                     <option value="question_number">Question Number</option>
                 </select>
                 <!-- Hidden input for reset flag -->
-                <input type="hidden" name="reset" id="reset_flag" value="0">
+                <input type="hidden" name="reset" id="reset-flag" value="0">
                 
-                <input type="submit" value="Reset Filter" id="button_reset_filter">
-                <input type="submit" value="Filter" id="button_filter">
+                <input type="submit" value="Reset Filter" id="button-reset-filter">
+                <input type="submit" value="Filter" id="button-filter">
 
             </form>
 
-            <table id='record_list_table'>
-                <th class='record_list_header'>
+            <table id='record-list-table'>
+                <th class='record-list-header'>
                     <a id='sort-link' href='?sort=image_name&order=desc'> << </a>
                         Image Name
                     <a id='sort-link' href='?sort=image_name&order=asc'> >> </a>
                 </th>
-                <th class='record_list_header'>
+                <th class='record-list-header'>
                     <a id='sort-link' href='?sort=image_url&order=desc'> << </a>
                         Image Url
                     <a id='sort-link' href='?sort=image_url&order=asc'> >> </a>
                 </th>
-                <th class='record_list_header'>
+                <th class='record-list-header'>
                     <a id='sort-link' href='?sort=image_name&order=desc'> << </a>
                         Question Number
                     <a id='sort-link' href='?sort=image_name&order=asc'> >> </a>
                 </th>
                 <?php
                     while($row = mysqli_fetch_assoc($result)) {
-                        echo "<tr id='record_row'>";
+                        echo "<tr id='record-row'>";
                         echo "
-                            <td class='record_list_data'>
+                            <td class='record-list-data'>
                                 <a href='edit_images_record.php?image_id=$row[image_id]' id='tdata'>$row[image_name]</a>
                             </td>
-                            <td class='record_list_data'>$row[image_url]</td>
-                            <td class='record_list_data'>$row[question_number]</td>                        
+                            <td class='record-list-data'>$row[image_url]</td>
+                            <td class='record-list-data'>$row[question_number]</td>                        
                         ";                            
                         echo "</tr>";
                     };
@@ -98,18 +98,18 @@
         </div>
     </div>
     <script>
-        document.getElementById('button_reset_filter').addEventListener('click', function() {
+        document.getElementById('button-reset-filter').addEventListener('click', function() {
             // Prevent the default form submission behavior
             event.preventDefault();
             
             // Set the reset flag to indicate that reset button was clicked
-            document.getElementById('reset_flag').value = "1";
+            document.getElementById('reset-flag').value = "1";
              
             // Reset the search input value
-            document.getElementById('text_search_category').value = '';
+            document.getElementById('text-search-category').value = '';
 
             // Reset the selected option in the dropdown
-            let dropdown = document.getElementById('option_search_term');
+            let dropdown = document.getElementById('option-search-term');
             dropdown.selectedIndex = 0;
             
             // Remove sorting parameters from the current URL

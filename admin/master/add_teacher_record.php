@@ -72,12 +72,12 @@
 
     <body>
         <div id="container">
-            <header id="header" class="header_container">
+            <header id="header" class="header-container">
                 <h2 id='title'>Add Teacher Record</h2> 
                 <a href='../logoff.php' class='button-like-link'>Logout</a>
             </header>
             <?php include('sidebar.html'); ?>
-            <div id='main_section'>
+            <div id='main-section'>
             <?php 
                 if ($record_exists) {
                     echo "<h4>There was an error adding the record to the database: $error_message</h4>";

@@ -9,24 +9,24 @@
 
     <body>
         <div id="container">
-            <header id="header" class="header_container">
+            <header id="header" class="header-container">
                 <h2 id='title'>Add Image Form </h2> 
                 <a href='../logoff.php' class='button-like-link'>Logout</a>
             </header>
             <?php include('sidebar.html'); ?>
-            <div id='main_section'>
-            <table id='record_list_table'>
-                <th class='record_list_header'>Image Name</th>
-                <th class='record_list_header'>Image URL</th>
-                <th class='record_list_header'>Question Number</th>
+            <div id='main-section'>
+            <table id='record-list-table'>
+                <th class='record-list-header'>Image Name</th>
+                <th class='record-list-header'>Image URL</th>
+                <th class='record-list-header'>Question Number</th>
                 <form id='editForm' action='add_image_record.php' method='post'>
                     <tr id='record_row'>
-                        <td class='edit_list_data'>
-                            <input class='edit-input' type='text' name='image_name' required oninput='updateQuestion()' id='image_name'>
+                        <td class='edit-list-data'>
+                            <input class='edit-input' type='text' name='image_name' required oninput='updateQuestion()' id='image-name'>
                         </td>
-                        <td class='edit_list_data'>images/<input class='edit-input' type='text' name='image_url' required></td>
-                        <td class='edit_list_data'>
-                            <input class='edit-input' type='text' name='question_number' required id='question_number'>
+                        <td class='edit-list-data'>images/<input class='edit-input' type='text' name='image_url' required></td>
+                        <td class='edit-list-data'>
+                            <input class='edit-input' type='text' name='question_number' required id='question-number'>
                             <select name='question_option' id='option-select'>
                                 <option>a</option>
                                 <option>b</option>
@@ -34,7 +34,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td><input class='edit-button' type='submit' value='add' name='add'></td>
+                        <td colspan='2'><input class='edit-button' type='submit' value='add' name='add'></td>
                         <td colspan='2'><input class='edit-button' type='button'  value='reset' onclick='resetForm()'></td>
                     </tr>
                     
@@ -49,10 +49,10 @@
     
             function updateQuestion() {
                 // Get the value from the first input
-                let image_name = document.getElementById('image_name').value;
+                let image_name = document.getElementById('image-name').value;
 
                 // Update the value of the second input
-                document.getElementById('question_number').value = image_name;
+                document.getElementById('question-number').value = image_name;
             }
     </script>
 
